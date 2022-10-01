@@ -1,7 +1,16 @@
 .container {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  padding-top: 3%;
   background-color: #ffc632;
-  height: 100px;
+  padding-bottom: 3%;
+}
+.title {
+  font-weight: 800;
+  font-size: large;
+  font-style: italic;
+  margin-right: auto;
+}
+.socialMediaBtn{
+  border: none;
+  outline: none;
+  background-color: transparent;
 }

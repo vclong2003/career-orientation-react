@@ -6,12 +6,64 @@ import Col from "react-bootstrap/Col";
 
 export default function Footer() {
   return (
-    <Container>
+    <Container className={styles.container} fluid>
       <Row>
-        <Col>1 of 3</Col>
-        <Col>2 of 3</Col>
-        <Col>3 of 3</Col>
+        <Col xs={12} lg={6}>
+          <Container>
+            <Row className={styles.title}>JESPER</Row>
+            <Row>
+              <button
+                className={styles.socialMediaBtn}
+                onClick={() => {
+                  handleSocialMediaBtn("twitterLink");
+                }}
+              >
+                <i className="bi bi-twitter" />
+              </button>
+              <button
+                className={styles.socialMediaBtn}
+                onClick={() => {
+                  handleSocialMediaBtn("facebbokLink");
+                }}
+              >
+                <i className="bi bi-facebook" />
+              </button>
+              <button
+                className={styles.socialMediaBtn}
+                onClick={() => {
+                  handleSocialMediaBtn("instaLink");
+                }}
+              >
+                <i className="bi bi-instagram" />
+              </button>
+            </Row>
+          </Container>
+        </Col>
+        <Col xs={12} lg={3}>
+          <Container>
+            <Row className={styles.title}>CONTACTS</Row>
+            <Row>
+              info@jesper.com
+              <br />
+              (917) 365-8863
+            </Row>
+          </Container>
+        </Col>
+        <Col xs={12} lg={3}>
+          <Container>
+            <Row className={styles.title}>P.O. BOX</Row>
+            <Row>
+              3721 Single Street
+              <br />
+              Quincy, MA 02169
+            </Row>
+          </Container>
+        </Col>
       </Row>
     </Container>
   );
 }
+
+const handleSocialMediaBtn = (url) => {
+  alert(url + " clicked!");
+};
