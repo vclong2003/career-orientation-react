@@ -1,0 +1,7 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ffc632;
+  height: 100px;
+}

@@ -1,0 +1,16 @@
+.navBar {
+  background-color: #07080d;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.logo {
+  font-size: xx-large;
+  font-style: italic;
+  font-weight: 800;
+}
+.navColapse {
+  justify-content: flex-end;
+}
+.navLink {
+  font-size: larger;
+}
