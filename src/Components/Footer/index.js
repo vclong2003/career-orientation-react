@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <Container className={styles.container} fluid>
       <Row>
-        <Col xs={12} lg={6}>
+        <Col xs={12} lg={6} className={styles.itemContainer}>
           <Container>
             <Row className={styles.title}>JESPER</Row>
             <Row>
@@ -39,7 +39,7 @@ export default function Footer() {
             </Row>
           </Container>
         </Col>
-        <Col xs={12} lg={3}>
+        <Col xs={12} lg={3} className={styles.itemContainer}>
           <Container>
             <Row className={styles.title}>CONTACTS</Row>
             <Row>
@@ -49,7 +49,7 @@ export default function Footer() {
             </Row>
           </Container>
         </Col>
-        <Col xs={12} lg={3}>
+        <Col xs={12} lg={3} className={styles.itemContainer}>
           <Container>
             <Row className={styles.title}>P.O. BOX</Row>
             <Row>

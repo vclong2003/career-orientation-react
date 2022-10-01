@@ -6,13 +6,13 @@ import Navbar from "react-bootstrap/Navbar";
 export default function NavigationBar() {
   return (
     <Navbar variant="dark" expand="lg" sticky="top" className={styles.navBar}>
-      <Navbar.Brand href="#home" className={styles.logo}>
+      <Navbar.Brand href="/" className={styles.logo}>
         JESPER
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className={styles.navColapse}>
         <Nav className="me-auto">
-          <Nav.Link href="#home" className={styles.navLink}>
+          <Nav.Link href="/" className={styles.navLink}>
             Home
           </Nav.Link>
           <Nav.Link href="#link" className={styles.navLink}>
