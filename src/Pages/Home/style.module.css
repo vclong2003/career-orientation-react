@@ -1,44 +1,85 @@
 .container {
-  background-color: white;
+  padding: 0;
+  margin: 0;
 }
-.commonSectionStyle {
-  background-color: black;
-}
-.section_1 {
+.section_1,
+.section_2,
+.section_3,
+.section_4 {
   background-color: black;
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding-bottom: 50px;
+}
+.imgContainer_2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 90%;
 }
 .img_1 {
-  width: 70%;
+  width: 75%;
+}
+.img_2 {
+  width: 50%;
 }
 .infoContainer_1 {
   width: 40%;
   position: absolute;
-  color: aliceblue;
   z-index: 10;
-  background-color: rgb(167, 167, 167);
-  right: 10%;
+  right: 1%;
 }
-.section_2 {
-  background-color: black;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+.infoContainer_2 {
+  width: 40%;
+  position: absolute;
+  z-index: 10;
+  left: 10%;
 }
-.section_3 {
-  background-color: black;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+.title_1,
+.title_2 {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: white;
+  font-weight: 800;
+  font-size: 100px;
+  font-style: italic;
+  line-height: 1;
 }
+.title_2 {
+  font-size: 40px;
+}
+.yellowText {
+  color: #ffc632;
+}
+.info_1,
+.info_2 {
+  margin-top: 40px;
+  color: white;
+  width: 60%;
+  font-size: 18px;
+}
+.info_2 {
+  width: 50%;
+}
+.button_1,
+.button_2 {
+  border: none;
+  outline: none;
+  color: black;
+  background-color: #ffc632;
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   .img_1 {
