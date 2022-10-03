@@ -5,9 +5,43 @@
   background-color: black;
 }
 .section_1 {
+  background-color: black;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.img_1 {
+  width: 70%;
+}
+.infoContainer_1 {
+  width: 40%;
+  position: absolute;
   color: aliceblue;
+  z-index: 10;
+  background-color: rgb(167, 167, 167);
+  right: 10%;
 }
 .section_2 {
+  background-color: black;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .section_3 {
+  background-color: black;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .img_1 {
+    width: 100%;
+  }
 }
