@@ -9,11 +9,12 @@
   font-style: italic;
   margin-right: auto;
 }
-.socialMediaBtn{
+.socialMediaBtn {
   border: none;
   outline: none;
   background-color: transparent;
+  color: black;
 }
-.itemContainer{
+.itemContainer {
   margin-top: 8px;
 }

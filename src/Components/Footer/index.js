@@ -3,6 +3,7 @@ import styles from "./style.module.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 export default function Footer() {
   return (
@@ -12,30 +13,30 @@ export default function Footer() {
           <Container>
             <Row className={styles.title}>JESPER</Row>
             <Row>
-              <button
+              <Button
                 className={styles.socialMediaBtn}
                 onClick={() => {
                   handleSocialMediaBtn("twitterLink");
                 }}
               >
                 <i className="bi bi-twitter" />
-              </button>
-              <button
+              </Button>
+              <Button
                 className={styles.socialMediaBtn}
                 onClick={() => {
                   handleSocialMediaBtn("facebbokLink");
                 }}
               >
                 <i className="bi bi-facebook" />
-              </button>
-              <button
+              </Button>
+              <Button
                 className={styles.socialMediaBtn}
                 onClick={() => {
                   handleSocialMediaBtn("instaLink");
                 }}
               >
                 <i className="bi bi-instagram" />
-              </button>
+              </Button>
             </Row>
           </Container>
         </Col>
