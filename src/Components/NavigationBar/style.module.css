@@ -14,3 +14,15 @@
 .navLink {
   font-size: larger;
 }
+@media only screen and (max-width: 768px) {
+  /* For mobile phones */
+  .navLink {
+    font-size: large;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+  /* For tablets */
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  /* For small laptops */
+}
