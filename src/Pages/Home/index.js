@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import alertify from "alertifyjs";
 export default class Home extends React.Component {
   render() {
     return (
@@ -120,3 +121,7 @@ export default class Home extends React.Component {
 const handleEmailSubscribe = (email) => {
   alert(email);
 };
+alertify.alert(
+  "Development state alert",
+  "Our website is in delevopment, this is just the PLACEHODER. Thanks for your understanding! "
+);
