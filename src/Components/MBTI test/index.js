@@ -1,4 +1,4 @@
-const points = [
+export const points = [
   {
     group: "E",
     ruleset: [
@@ -551,7 +551,7 @@ const points = [
   },
 ];
 
-const question = [
+export const question = [
   {
     questionId: 1,
     content: "WHEN YOU GO SOMEWHERE FOR THE DAY, WOULD YOU RATHER",

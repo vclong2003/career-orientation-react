@@ -121,8 +121,8 @@ export default class Home extends React.Component {
 const handleEmailSubscribe = (email) => {
   alert(email);
 };
-alertify.alert(
-  "Development state alert",
-  "Our website is in delevopment, this is just the PLACEHODER. Thanks for your understanding! "
-);
+// alertify.alert(
+//   "Development state alert",
+//   "Our website is in delevopment, this is just the PLACEHODER. Thanks for your understanding! "
+// );
 // test write
