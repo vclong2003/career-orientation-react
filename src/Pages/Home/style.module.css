@@ -3,201 +3,37 @@
   margin: 0;
 }
 .section_1,
-.section_2,
-.section_3,
-.section_4 {
+.section_2 {
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-top: 3%;
-  padding-bottom: 3%;
+  padding: 0;
 }
-.section_1 {
-  background-color: #08080d;
+.section_1,
+.section_3 {
+  background-color: #fffdec;
+  padding: 0;
 }
 .section_2 {
-  background-color: #080a0c;
-}
-.section_3 {
-  background-color: #111523;
-}
-.section_4 {
-  background-color: #07080d;
-}
-.imgContainer_1,
-.imgContainer_2,
-.imgContainer_3,
-.imgContainer_4 {
+  background-color: #fffdec;
+  padding-top: 20px;
+  padding-bottom: 20px;
   display: flex;
-  flex-direction: row;
   justify-content: flex-start;
-  width: 80%;
-}
-.imgContainer_2 {
-  justify-content: flex-end;
-}
-.imgContainer_4 {
-  justify-content: flex-end;
-}
-.img_1,
-.img_4 {
-  width: 65%;
 }
 .img_2 {
-  width: 40%;
-}
-.img_3 {
-  width: 40%;
-}
-.infoContainer_1,
-.infoContainer_2,
-.infoContainer_3,
-.infoContainer_4 {
-  width: 40%;
-  position: absolute;
-  z-index: 10;
-}
-.infoContainer_1 {
-  right: 1%;
-}
-.infoContainer_2 {
-  left: 15%;
-}
-.infoContainer_3 {
-  right: 1%;
-}
-.infoContainer_4 {
-  left: 15%;
-}
-.title_1,
-.title_2,
-.title_3,
-.title_4 {
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  color: white;
-  font-weight: 800;
-  font-size: 100px;
-  font-style: italic;
-  line-height: 1;
-}
-.title_2 {
-  font-size: 40px;
-}
-.title_3 {
-  font-size: 40px;
-}
-.title_4 {
-  font-size: 40px;
-  width: 80%;
-}
-.yellowText {
-  color: #ffc632;
-}
-.info_1,
-.info_2,
-.info_3,
-.info_4 {
-  margin-top: 40px;
-  color: white;
   width: 60%;
-  font-size: 18px;
-}
-.info_2 {
-  width: 60%;
-}
-.info_4 {
-  font-size: 22px;
-  font-weight: 700;
-  font-style: italic;
-}
-.button_1,
-.button_2,
-.button_3,
-.button_4 {
-  border: none;
-  outline: none;
-  color: black;
-  background-color: #ffc632;
-  padding-left: 6%;
-  padding-right: 6%;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  font-size: 15px;
-  margin-top: 20px;
-  font-weight: 600;
-}
-.subscribe_form {
-  margin-top: 20px;
-}
-.subscribe_form_label {
-  color: white;
-}
-.subscribe_form_input {
-  width: 50%;
-  background-color: rgba(255, 255, 255, 0.7);
 }
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones */
   .section_1,
-  .section_2,
-  .section_3,
-  .section_4 {
+  .section_2 {
     flex-direction: column;
   }
-  .imgContainer_1,
-  .imgContainer_2,
-  .imgContainer_3,
-  .imgContainer_4 {
-    width: 100%;
-  }
-  .img_1,
-  .img_2,
-  .img_3,
-  .img_4 {
-    width: 100%;
-  }
-  .infoContainer_1,
-  .infoContainer_2,
-  .infoContainer_3,
-  .infoContainer_4 {
-    margin-top: 3%;
-    width: 100%;
-    position: relative;
-    left: 0%;
-  }
-  .title_1 {
-    font-size: 40px;
-  }
-  .title_2,
-  .title_3,
-  .title_4 {
-    font-size: 20px;
-  }
-  .title_4 {
-    width: 100%;
-  }
-  .info_1,
-  .info_2,
-  .info_3,
-  .info_4 {
-    margin-top: 10px;
-    font-size: 14px;
-    width: 100%;
-  }
-  .button_1,
-  .button_2,
-  .button_3,
-  .button_4 {
-    font-size: 10px;
-    margin-top: 15px;
-  }
-  .subscribe_form_input {
+  .img_2 {
     width: 100%;
   }
 }
@@ -211,58 +47,7 @@
   .img_3 {
     width: 50%;
   }
-  .title_1 {
-    font-size: 50px;
-  }
-  .title_2,
-  .title_3,
-  .title_4 {
-    font-size: 20px;
-  }
-  .info_1,
-  .info_2,
-  .info_3,
-  .info_4 {
-    margin-top: 20px;
-    font-size: 14px;
-    width: 80%;
-  }
-  .info_2 {
-    width: 70%;
-  }
-  .button_1,
-  .button_2,
-  .button_3,
-  .button_4 {
-    font-size: 12px;
-  }
-  .subscribe_form_input {
-    width: 60%;
-  }
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   /* For small laptops */
-  .title_1 {
-    font-size: 60px;
-  }
-  .title_2,
-  .title_3,
-  .title_4 {
-    font-size: 30px;
-  }
-  .info_1,
-  .info_2,
-  .info_3,
-  .info_4 {
-    font-size: 14px;
-  }
-  .info_2 {
-    width: 70%;
-  }
-  .button_1,
-  .button_2,
-  .button_3,
-  .button_4 {
-    font-size: 12px;
-  }
 }

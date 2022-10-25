@@ -5,9 +5,9 @@ import Navbar from "react-bootstrap/Navbar";
 
 export default function NavigationBar() {
   return (
-    <Navbar variant="dark" expand="lg" sticky="top" className={styles.navBar}>
+    <Navbar variant="light" expand="lg" sticky="top" className={styles.navBar}>
       <Navbar.Brand href="/" className={styles.logo}>
-        JESPER
+        THE RIZE
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className={styles.navColapse}>

@@ -11,7 +11,7 @@ export default function Footer() {
       <Row>
         <Col xs={12} lg={6} className={styles.itemContainer}>
           <Container>
-            <Row className={styles.title}>JESPER</Row>
+            <Row className={styles.title}>THE RIZE</Row>
             <Row>
               <Button
                 className={styles.socialMediaBtn}

@@ -1,10 +1,10 @@
 .navBar {
-  background-color: #07080d;
   padding-left: 5%;
   padding-right: 5%;
+  background-color: #fffdec;
 }
 .logo {
-  font-size: xx-large;
+  font-size: 28px;
   font-style: italic;
   font-weight: 800;
 }
@@ -12,7 +12,7 @@
   justify-content: flex-end;
 }
 .navLink {
-  font-size: larger;
+  font-size: 20px;
 }
 @media only screen and (max-width: 768px) {
   /* For mobile phones */

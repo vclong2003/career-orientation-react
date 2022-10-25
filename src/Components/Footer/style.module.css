@@ -1,6 +1,6 @@
 .container {
   padding-top: 2%;
-  background-color: #ffc632;
+  background-color: #fffdec;
   padding-bottom: 3%;
 }
 .title {
@@ -8,12 +8,13 @@
   font-size: large;
   font-style: italic;
   margin-right: auto;
+  color: #3c8c4a;
 }
 .socialMediaBtn {
   border: none;
   outline: none;
   background-color: transparent;
-  color: black;
+  color: #3c8c4a;
 }
 .itemContainer {
   margin-top: 8px;

@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavigationBar from "./Components/NavigationBar";
 import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
+import MbtiTest from "./Components/MBTI test";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
+    <MbtiTest />
+    {/* <Router>
       <div>
         <NavigationBar />
         <Routes>
@@ -16,6 +18,6 @@ root.render(
         </Routes>
         <Footer />
       </div>
-    </Router>
+    </Router> */}
   </React.StrictMode>
 );
