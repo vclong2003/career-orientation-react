@@ -7,7 +7,7 @@ export default function MbtiTest() {
   const [isTesting, setTestingState] = useState(true);
   const [questionIndex, setQuestionIndex] = useState(0);
 
-  const pointResult = {
+  let pointResult = {
     E: 0,
     I: 0,
     S: 0,
@@ -16,6 +16,22 @@ export default function MbtiTest() {
     F: 0,
     J: 0,
     P: 0,
+  };
+
+  const addPoint = (questionId = 0, selection = "A") => {
+    for (let i = 0; i < points.length; i++) {
+      for (let j = 0; j < points[i].ruleset.length; j++) {
+        if (
+          points[i].ruleset[j].questionId === questionId &&
+          points[i].ruleset[j].selection === selection
+        ) {
+          const point = points[i].ruleset[j].point;
+          console.log(point);
+          pointResult[points[i].group] =
+            pointResult[points[i].group] + point;
+        }
+      }
+    }
   };
 
   const LoadQuestionModal = () => {
@@ -30,7 +46,7 @@ export default function MbtiTest() {
           <Button
             className={styles.answerBtn}
             onClick={() => {
-              console.log(question[questionIndex].questionId);
+              addPoint(question[questionIndex].questionId, "A");
               setQuestionIndex(questionIndex + 1);
             }}
           >
@@ -50,7 +66,7 @@ export default function MbtiTest() {
   };
 
   const LoadResult = () => {
-    return <Container>Result</Container>;
+    return <Container>{console.log(pointResult)}</Container>;
   };
 
   while (isTesting) {
