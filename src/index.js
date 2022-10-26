@@ -9,8 +9,8 @@ import MbtiTest from "./Components/MBTI test";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <MbtiTest />
-    {/* <Router>
+    {/* <MbtiTest /> */}
+    <Router>
       <div>
         <NavigationBar />
         <Routes>
@@ -18,6 +18,6 @@ root.render(
         </Routes>
         <Footer />
       </div>
-    </Router> */}
+    </Router>
   </React.StrictMode>
 );

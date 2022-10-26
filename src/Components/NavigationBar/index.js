@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./style.module.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Badge from "react-bootstrap/Badge";
 
 export default function NavigationBar() {
   return (
@@ -15,8 +17,27 @@ export default function NavigationBar() {
           <Nav.Link href="/" className={styles.navLink}>
             Home
           </Nav.Link>
-          <Nav.Link href="#link" className={styles.navLink}>
-            About
+          <NavDropdown
+            title="Test"
+            id="basic-nav-dropdown"
+            className={styles.navLink}
+          >
+            <NavDropdown.Item href="#">MBTI</NavDropdown.Item>
+          </NavDropdown>
+          <Nav.Link href="#" className={styles.navLink}>
+            Review
+          </Nav.Link>
+          <Nav.Link href="#" className={styles.navLink}>
+            Workspace
+          </Nav.Link>
+          <Nav.Link href="#" className={styles.navLink}>
+            Mentoring{" "}
+            <Badge pill bg="warning" text="dark">
+              Premium
+            </Badge>
+          </Nav.Link>
+          <Nav.Link href="#" className={styles.navLink}>
+            About Us
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
