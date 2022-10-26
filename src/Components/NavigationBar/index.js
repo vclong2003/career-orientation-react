@@ -19,7 +19,7 @@ export default function NavigationBar() {
             id="basic-nav-dropdown"
             className={styles.navLink}
           >
-            <NavDropdown.Item href="#">MBTI</NavDropdown.Item>
+            <NavDropdown.Item href="/mbtitest">MBTI</NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="#" className={styles.navLink}>
             Review
