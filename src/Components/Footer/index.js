@@ -44,11 +44,9 @@ export default function Footer() {
           <Container>
             <Row className={styles.title}>CONTACTS</Row>
             <Row>
-              Dev: Vu Cong Long
+              placeholder@test.mail
               <br />
-              vclong2003@gmail.com
-              <br />
-              0888827768
+              (+84) 123456789
             </Row>
           </Container>
         </Col>

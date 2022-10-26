@@ -231,6 +231,16 @@ export default function Home() {
           src={require("../../Assets/Images/Homepage/workSpace.png")}
           width={"100%"}
         ></Image>
+        <div className={styles.workspaceDescription}>
+          Aute dolore in aute irure aute tempor aliquip commodo officia aute
+          sint nisi fugiat ullamco. Cupidatat consectetur ea velit ea culpa eu
+          dolor. Tempor pariatur ad aliquip ulsbfjdslamco do aliqua.
+          Reprehenderit deserunt eu est ut aliquip tempor aliquip pariatur
+          veniam consequat qui elit ea. Dolore amet veniam laboris irure magna
+          et consequat nulla id elit do consectetur adipisicing. Laborum cillum
+          eu reprehenderit eu ad eu nostrud veniam fugiat elit in. Veniam
+          deserunt in velit ut cillum enim sunt Lorem enim.
+        </div>
       </Container>
     </Container>
   );

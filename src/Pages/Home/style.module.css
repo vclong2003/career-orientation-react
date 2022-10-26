@@ -144,6 +144,23 @@
   padding-right: 10%;
 }
 
+.section_6 {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+}
+.workspaceDescription {
+  position: absolute;
+  width: 50%;
+  background-color: #fffdece5;
+  color: #06605a;
+  padding: 20px;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones */
 }
