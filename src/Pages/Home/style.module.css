@@ -5,7 +5,9 @@
 .section_1,
 .section_2,
 .section_3,
-.section_4 {
+.section_4,
+.section_5,
+.section_6 {
   background-color: #fffdec;
   padding: 0;
 }
@@ -47,6 +49,17 @@
   right: 5%;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+}
+.startBtn {
+  background-color: #90d5d5;
+  border: none;
+  outline: none;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 20px;
 }
 
 .section_3 {
@@ -117,6 +130,18 @@
 }
 .reviewItem {
   width: 100%;
+}
+
+.section_5 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.chatItemsContainer {
+  position: absolute;
+  margin-top: 12%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 @media only screen and (max-width: 768px) {

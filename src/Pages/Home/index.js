@@ -14,7 +14,10 @@ export default function Home() {
     <Container className={styles.container} fluid>
       {/*Section 1 ---------------------------------------------------------------*/}
       <Container className={styles.section_1} fluid>
-        <Image src={require("../../Assets/Images/Homepage/1.png")} fluid />
+        <Image
+          src={require("../../Assets/Images/Homepage/1.png")}
+          width={"100%"}
+        />
         <motion.div
           animate={{
             bottom: [0, -40, 0, -40, 0],
@@ -51,16 +54,19 @@ export default function Home() {
             fluid
           />
         </motion.div>
-        <motion.div className={styles.routeDescription}>
-          Aute dolore in aute irure aute tempor aliquip commodo officia aute
-          sint nisi fugiat ullamco. Cupidatat consectetur ea velit ea culpa eu
-          dolor. Tempor pariatur ad aliquip ulsbfjdslamco do aliqua.
-          Reprehenderit deserunt eu est ut aliquip tempor aliquip pariatur
-          veniam consequat qui elit ea. Dolore amet veniam laboris irure magna
-          et consequat nulla id elit do consectetur adipisicing. Laborum cillum
-          eu reprehenderit eu ad eu nostrud veniam fugiat elit in. Veniam
-          deserunt in velit ut cillum enim sunt Lorem enim.
-        </motion.div>
+        <div className={styles.routeDescription}>
+          <p>
+            Aute dolore in aute irure aute tempor aliquip commodo officia aute
+            sint nisi fugiat ullamco. Cupidatat consectetur ea velit ea culpa eu
+            dolor. Tempor pariatur ad aliquip ulsbfjdslamco do aliqua.
+            Reprehenderit deserunt eu est ut aliquip tempor aliquip pariatur
+            veniam consequat qui elit ea. Dolore amet veniam laboris irure magna
+            et consequat nulla id elit do consectetur adipisicing. Laborum
+            cillum eu reprehenderit eu ad eu nostrud veniam fugiat elit in.
+            Veniam deserunt in velit ut cillum enim sunt Lorem enim.
+          </p>
+          <Button className={styles.startBtn}>Start the journey</Button>
+        </div>
       </Container>
       {/*Section 3 ---------------------------------------------------------------*/}
       <Container className={styles.section_3} fluid>
@@ -124,8 +130,7 @@ export default function Home() {
       <Container className={styles.section_4} fluid>
         <Image
           src={require("../../Assets/Images/Homepage/review.png")}
-          className={styles.img_4}
-          fluid
+          width={"100%"}
         />
         <Row className={styles.demoReviewContainer} fluid>
           <Col className={styles.demoReviewCol}>
@@ -171,22 +176,67 @@ export default function Home() {
         </Row>
       </Container>
       {/*Section 5 ---------------------------------------------------------------*/}
-      <Container className={styles.section_3} fluid>
+      <Container className={styles.section_5} fluid>
+        <Image
+          src={require("../../Assets/Images/Homepage/gropuChatBg.png")}
+          width={"100%"}
+        />
+        <Container className={styles.chatItemsContainer} fluid>
+          <Row>
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  bounce: 0.5,
+                  duration: 1,
+                },
+              }}
+            >
+              <Image
+                src={require("../../Assets/Images/Homepage/groupChatDes1.png")}
+                width={"50%"}
+              />
+            </motion.div>
+          </Row>
+          <Row>
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  bounce: 0.5,
+                  duration: 1,
+                },
+              }}
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                flexDirection: "row",
+              }}
+            >
+              <Image
+                src={require("../../Assets/Images/Homepage/groupChatDes2.png")}
+                width={"35%"}
+              />
+            </motion.div>
+          </Row>
+        </Container>
+      </Container>
+      {/*Section 6 ---------------------------------------------------------------*/}
+      <Container className={styles.section_6} fluid>
         <Image
           src={require("../../Assets/Images/Homepage/workSpace.png")}
-          className={styles.img_3}
-          fluid
-        />
+          width={"100%"}
+        ></Image>
       </Container>
     </Container>
   );
 }
 
-const handleEmailSubscribe = (email) => {
-  alert(email);
-};
 // alertify.alert(
 //   "Development state alert",
 //   "Our website is in delevopment, this is just the PLACEHODER. Thanks for your understanding! "
 // );
-// test write

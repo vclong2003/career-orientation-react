@@ -14,9 +14,6 @@ export default function NavigationBar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className={styles.navColapse}>
         <Nav className="me-auto">
-          <Nav.Link href="/" className={styles.navLink}>
-            Home
-          </Nav.Link>
           <NavDropdown
             title="Test"
             id="basic-nav-dropdown"
@@ -35,9 +32,6 @@ export default function NavigationBar() {
             <Badge pill bg="warning" text="dark">
               Premium
             </Badge>
-          </Nav.Link>
-          <Nav.Link href="#" className={styles.navLink}>
-            About Us
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
