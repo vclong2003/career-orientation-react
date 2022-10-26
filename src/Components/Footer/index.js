@@ -44,19 +44,21 @@ export default function Footer() {
           <Container>
             <Row className={styles.title}>CONTACTS</Row>
             <Row>
-              info@jesper.com
+              Dev: Vu Cong Long
               <br />
-              (917) 365-8863
+              vclong2003@gmail.com
+              <br />
+              0888827768
             </Row>
           </Container>
         </Col>
         <Col xs={12} lg={3} className={styles.itemContainer}>
           <Container>
-            <Row className={styles.title}>P.O. BOX</Row>
+            <Row className={styles.title}>HEADQUARTER</Row>
             <Row>
-              3721 Single Street
+              2 Dương Khuê, Mai Dịch
               <br />
-              Quincy, MA 02169
+              Cầu Giấy, Hà Nội
             </Row>
           </Container>
         </Col>

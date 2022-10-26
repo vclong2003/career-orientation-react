@@ -9,7 +9,7 @@ export default function NavigationBar() {
   return (
     <Navbar variant="light" expand="lg" sticky="top" className={styles.navBar}>
       <Navbar.Brand href="/" className={styles.logo}>
-        THE RIZE
+        FINDYOURMAPLE
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className={styles.navColapse}>
