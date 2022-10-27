@@ -8,14 +8,7 @@ export default function MbtiTest() {
   const [questionIndex, setQuestionIndex] = useState(0);
 
   let pointResult = {
-    E: 0,
-    I: 0,
-    S: 0,
-    N: 0,
-    T: 0,
-    F: 0,
-    J: 0,
-    P: 0,
+    
   };
 
   const addPoint = (questionId = 0, selection = "A") => {

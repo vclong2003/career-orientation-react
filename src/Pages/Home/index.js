@@ -18,22 +18,6 @@ export default function Home() {
           src={require("../../Assets/Images/Homepage/1.png")}
           width={"100%"}
         />
-        <motion.div
-          animate={{
-            bottom: [0, -40, 0, -40, 0],
-            transition: {
-              type: "spring",
-              bounce: 0.5,
-              duration: 2.5,
-              repeat: 2,
-            },
-          }}
-          className={styles.scrollDownIconContainer}
-        >
-          Scroll down to see more
-          <br />
-          <i className="bi bi-chevron-double-down"></i>
-        </motion.div>
       </Container>
       {/*Section 2 ---------------------------------------------------------------*/}
       <Container className={styles.section_2} fluid>
