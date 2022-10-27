@@ -31,6 +31,7 @@ export default function MbtiPage() {
       <Image
         src={require("../../Assets/Images/MbtiTestPage/background.png")}
         width={"100%"}
+        className={styles.background}
       ></Image>
       <ProgressBar
         animated

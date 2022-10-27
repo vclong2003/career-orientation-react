@@ -1,6 +1,8 @@
 .container {
   padding: 0;
   margin: 0;
+  background-color: #fffdec;
+  overflow-x: hidden;
 }
 .section_1,
 .section_2,
@@ -18,13 +20,8 @@
   justify-content: flex-end;
   align-items: center;
 }
-.scrollDownIconContainer {
-  position: absolute;
-  color: rgb(17, 17, 17);
-  z-index: 10;
-  font-size: 30px;
-  margin-bottom: 5%;
-  text-align: center;
+.img_1 {
+  width: 100%;
 }
 
 .section_2 {
@@ -39,6 +36,9 @@
   margin-left: 10%;
   width: 50%;
 }
+.img_2 img {
+  width: 100%;
+}
 .routeDescription {
   position: absolute;
   width: 40%;
@@ -48,7 +48,7 @@
   padding: 20px;
   right: 5%;
   border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   display: flex;
   flex-direction: column;
 }
@@ -143,6 +143,12 @@
   padding-left: 10%;
   padding-right: 10%;
 }
+.chatImg1 {
+  width: 50%;
+}
+.chatImg2 {
+  width: 35%;
+}
 
 .section_6 {
   display: flex;
@@ -163,10 +169,159 @@
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones */
+  .img_1 {
+    width: 180%;
+  }
+
+  .section_2 {
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 35%;
+  }
+  .img_2 {
+    margin: 0;
+    width: 96%;
+  }
+  .routeDescription {
+    font-size: 16px;
+    bottom: -35%;
+    padding: 10px;
+    width: 90%;
+    left: auto;
+    right: auto;
+  }
+
+  .section_3 {
+    padding-top: 20%;
+  }
+  .img_3 {
+    width: 100%;
+  }
+  .personalityTestTile {
+    bottom: 5%;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .personalityTestDesc {
+    top: 1%;
+    width: 90%;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .img_4 {
+    width: 160%;
+  }
+  .demoReviewContainer {
+    width: 100%;
+  }
+
+  .img_5 {
+    width: 140%;
+  }
+  .chatImg1 {
+    width: 95%;
+    margin-bottom: 2%;
+  }
+  .chatImg2 {
+    width: 70%;
+  }
+
+  .img_6 {
+    width: 125%;
+  }
+  .workspaceDescription {
+    width: 95%;
+    font-size: 16px;
+    padding: 10px;
+  }
 }
 @media only screen and (min-width: 769px) and (max-width: 991px) {
   /* For tablets */
+  .section_2 {
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 3%;
+  }
+  .img_2 {
+    margin: 0;
+    width: 75%;
+  }
+  .routeDescription {
+    font-size: 18px;
+    bottom: -2%;
+    padding: 10px;
+    width: 90%;
+    left: auto;
+    right: auto;
+  }
+
+  .img_3 {
+    width: 95%;
+  }
+  .personalityTestTile {
+    bottom: 10%;
+    font-size: 25px;
+    font-weight: 500;
+    padding: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .personalityTestDesc {
+    top: 5%;
+    width: 70%;
+  }
+
+  .demoReviewContainer {
+    padding-top: 2%;
+    width: 75%;
+  }
+
+  .chatImg1 {
+    width: 58%;
+  }
+  .chatImg2 {
+    width: 42%;
+  }
+
+  .workspaceDescription {
+    width: 80%;
+    font-size: 18px;
+  }
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   /* For small laptops */
+  .img_2 {
+    width: 50%;
+  }
+  .routeDescription {
+    font-size: 18px;
+  }
+  .startBtn {
+    font-size: 16px;
+  }
+
+  .img_3 {
+    width: 95%;
+  }
+  .personalityTestTile {
+    font-size: 25px;
+    font-weight: 500;
+  }
+  .personalityTestDesc {
+    top: 10%;
+    width: 60%;
+  }
+
+  .demoReviewContainer {
+    width: 70%;
+  }
+
+  .workspaceDescription {
+    width: 60%;
+    font-size: 18px;
+  }
 }

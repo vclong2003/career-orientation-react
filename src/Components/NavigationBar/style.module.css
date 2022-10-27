@@ -16,8 +16,11 @@
 }
 @media only screen and (max-width: 768px) {
   /* For mobile phones */
+  .logo{
+    font-size: 22px;
+  }
   .navLink {
-    font-size: large;
+    font-size: 18px;
   }
 }
 @media only screen and (min-width: 769px) and (max-width: 991px) {

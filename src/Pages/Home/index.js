@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import styles from "./style.module.css";
-import { Col, Container, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 
 import Button from "react-bootstrap/Button";
 import { motion } from "framer-motion";
 export default function Home() {
   const [visibility, setVisibility] = useState(false);
-
+  const isMobile = window.screen.width <= 991 ? true : false;
   return (
     <Container className={styles.container} fluid>
       {/*Section 1 ---------------------------------------------------------------*/}
       <Container className={styles.section_1} fluid>
         <Image
           src={require("../../Assets/Images/Homepage/1.png")}
-          width={"100%"}
+          className={styles.img_1}
         />
       </Container>
       {/*Section 2 ---------------------------------------------------------------*/}
       <Container className={styles.section_2} fluid>
-        <motion.div
-          initial={{ x: -500 }}
+        <motion.img
+          initial={{ x: isMobile ? 0 : -400 }}
           whileInView={{
             x: 0,
             transition: {
@@ -30,22 +30,14 @@ export default function Home() {
             },
           }}
           className={styles.img_2}
-        >
-          <Image
-            src={require("../../Assets/Images/Homepage/route.png")}
-            fluid
-          />
-        </motion.div>
+          src={require("../../Assets/Images/Homepage/route.png")}
+        />
         <div className={styles.routeDescription}>
           <p>
             Aute dolore in aute irure aute tempor aliquip commodo officia aute
             sint nisi fugiat ullamco. Cupidatat consectetur ea velit ea culpa eu
             dolor. Tempor pariatur ad aliquip ulsbfjdslamco do aliqua.
-            Reprehenderit deserunt eu est ut aliquip tempor aliquip pariatur
-            veniam consequat qui elit ea. Dolore amet veniam laboris irure magna
-            et consequat nulla id elit do consectetur adipisicing. Laborum
-            cillum eu reprehenderit eu ad eu nostrud veniam fugiat elit in.
-            Veniam deserunt in velit ut cillum enim sunt Lorem enim.
+            Reprehenderit deserunt eu est ut
           </p>
           <Button className={styles.startBtn} href="/mbtitest">
             Start the journey
@@ -102,12 +94,9 @@ export default function Home() {
             },
           }}
         >
-          The personality test is the initial element of our website. We will
-          use the world's most well-known and reputable personality tests (MBTI,
-          DISC, MAPP, etc.) to allow students to freely learn about their
-          personalities in different areas of these tests. The unique feature is
-          that after finishing all of the exams, the user will obtain the
-          combined results of the tests mentioned above.
+          Occaecat ex nostrud cupidatat nulla exercitation ullamco quis
+          consequat enim labore do aliquip. Voluptate cillum adipisicing eu
+          dolor sdjk kdsjk ksdfj kdfjg kdfjg ksdjgise sdgijr sjgrs
         </motion.div>
       </Container>
       {/*Section 4 ---------------------------------------------------------------*/}
@@ -115,6 +104,7 @@ export default function Home() {
         <Image
           src={require("../../Assets/Images/Homepage/review.png")}
           width={"100%"}
+          className={styles.img_4}
         />
         <Row className={styles.demoReviewContainer} fluid>
           <Col className={styles.demoReviewCol}>
@@ -123,7 +113,7 @@ export default function Home() {
               className={styles.reviewSchoolName}
             />
             <motion.div
-              initial={{ x: -200 }}
+              initial={{ x: isMobile ? 0 : -200 }}
               whileInView={{
                 x: 0,
                 transition: {
@@ -141,7 +131,7 @@ export default function Home() {
           </Col>
           <Col className={styles.demoReviewCol}>
             <motion.div
-              initial={{ x: 200 }}
+              initial={{ x: isMobile ? 0 : 200 }}
               whileInView={{
                 x: 0,
                 transition: {
@@ -164,6 +154,7 @@ export default function Home() {
         <Image
           src={require("../../Assets/Images/Homepage/gropuChatBg.png")}
           width={"100%"}
+          className={styles.img_5}
         />
         <Container className={styles.chatItemsContainer} fluid>
           <Row>
@@ -180,7 +171,7 @@ export default function Home() {
             >
               <Image
                 src={require("../../Assets/Images/Homepage/groupChatDes1.png")}
-                width={"50%"}
+                className={styles.chatImg1}
               />
             </motion.div>
           </Row>
@@ -203,7 +194,7 @@ export default function Home() {
             >
               <Image
                 src={require("../../Assets/Images/Homepage/groupChatDes2.png")}
-                width={"35%"}
+                className={styles.chatImg2}
               />
             </motion.div>
           </Row>
@@ -214,16 +205,13 @@ export default function Home() {
         <Image
           src={require("../../Assets/Images/Homepage/workSpace.png")}
           width={"100%"}
+          className={styles.img_6}
         ></Image>
         <div className={styles.workspaceDescription}>
           Aute dolore in aute irure aute tempor aliquip commodo officia aute
           sint nisi fugiat ullamco. Cupidatat consectetur ea velit ea culpa eu
-          dolor. Tempor pariatur ad aliquip ulsbfjdslamco do aliqua.
-          Reprehenderit deserunt eu est ut aliquip tempor aliquip pariatur
-          veniam consequat qui elit ea. Dolore amet veniam laboris irure magna
-          et consequat nulla id elit do consectetur adipisicing. Laborum cillum
-          eu reprehenderit eu ad eu nostrud veniam fugiat elit in. Veniam
-          deserunt in velit ut cillum enim sunt Lorem enim.
+          dolor. Tempor pariatur ad aliquip ulsbfjdslamco do aliqua. Repllum
+          enim sunt Lorem enim.
         </div>
       </Container>
     </Container>
