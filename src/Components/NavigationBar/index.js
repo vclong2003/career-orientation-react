@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Badge from "react-bootstrap/Badge";
-import { Button, Image } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default function NavigationBar() {
   return (
