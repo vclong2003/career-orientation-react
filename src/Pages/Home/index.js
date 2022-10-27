@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import styles from "./style.module.css";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import alertify from "alertifyjs";
 import { motion } from "framer-motion";
 export default function Home() {
   const [visibility, setVisibility] = useState(false);
@@ -49,7 +47,9 @@ export default function Home() {
             cillum eu reprehenderit eu ad eu nostrud veniam fugiat elit in.
             Veniam deserunt in velit ut cillum enim sunt Lorem enim.
           </p>
-          <Button className={styles.startBtn}>Start the journey</Button>
+          <Button className={styles.startBtn} href="/mbtitest">
+            Start the journey
+          </Button>
         </div>
       </Container>
       {/*Section 3 ---------------------------------------------------------------*/}
@@ -229,8 +229,3 @@ export default function Home() {
     </Container>
   );
 }
-
-// alertify.alert(
-//   "Development state alert",
-//   "Our website is in delevopment, this is just the PLACEHODER. Thanks for your understanding! "
-// );
