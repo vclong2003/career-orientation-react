@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Badge from "react-bootstrap/Badge";
+import { Button } from "react-bootstrap";
 
 export default function NavigationBar() {
   return (
@@ -33,6 +34,7 @@ export default function NavigationBar() {
               Premium
             </Badge>
           </Nav.Link>
+          <Button className={styles.authBtn}>Login/Register</Button>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
