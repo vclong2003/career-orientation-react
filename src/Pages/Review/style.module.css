@@ -10,10 +10,28 @@
   font-weight: 600;
 }
 
+.majorContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.majorItem {
+  background-color: #7cb69d;
+  padding: 8px;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 20px;
+  color: #fffdec;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
 .reviewContainer {
   padding-top: 15px;
   padding-bottom: 15px;
-  width: 50%;
+  width: 60%;
 }
 .reviewItem {
   margin-bottom: 10px;

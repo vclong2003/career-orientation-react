@@ -1,4 +1,4 @@
-import { Container, Image } from "react-bootstrap";
+import { Container, Image, Row } from "react-bootstrap";
 import styles from "./style.module.css";
 import Accordion from "react-bootstrap/Accordion";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
@@ -24,6 +24,12 @@ export default function ReviewPage() {
   return (
     <Container fluid className={styles.container}>
       <Container className={styles.pageTitle}>School review</Container>
+      <Container className={styles.majorContainer}>
+        <Row>
+          <div className={styles.majorItem}>Human resource</div>
+          <div className={styles.majorItem}>Human resource</div>
+        </Row>
+      </Container>
       <Container className={styles.reviewContainer}>
         <Accordion style={{ width: "100%", backgroundColor: "transparent" }}>
           <Card className={styles.reviewItem}>
