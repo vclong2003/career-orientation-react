@@ -1,0 +1,40 @@
+.container {
+  position: relative;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.packageDescriptionContainer {
+  padding-left: 5%;
+  padding-right: 5%;
+  position: absolute;
+  top: 20%;
+  margin-left: 10%;
+  margin-right: 10%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.description {
+  background-color: #ceea5f;
+  color: #467010;
+  padding: 20px;
+  width: 24%;
+  border-radius: 20px;
+  text-align: center;
+}
+.purchaseBtnContainer {
+  margin-top: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.purchaseBtn {
+  font-size: 22px;
+  font-weight: 400;
+  background-color: #008000;
+  border-radius: 25px;
+  text-align: center;
+  padding: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+}

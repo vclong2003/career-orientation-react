@@ -23,7 +23,7 @@ export default function NavigationBar() {
           <Nav.Link href="#" className={styles.navLink}>
             Workspace
           </Nav.Link>
-          <Nav.Link href="#" className={styles.navLink}>
+          <Nav.Link href="/premiumpackage" className={styles.navLink}>
             Mentoring{" "}
             <Badge pill bg="warning" text="dark">
               Premium
