@@ -6,6 +6,8 @@ import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
 
 import MbtiPage from "./Pages/MBTI_Test";
+import DiscTest from "./Pages/DISC_Test";
+import TestResultPage from "./Pages/TestResult";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,8 +16,11 @@ root.render(
       <div>
         <NavigationBar />
         <Routes>
+          {/* console.log(sessionStorage.getItem("mbtiResult")) */}
           <Route path="/" element={<Home />} />
           <Route path="/mbtitest" element={<MbtiPage />} />
+          <Route path="/disctest" element={<DiscTest />} />
+          <Route path="/testresult" element={<TestResultPage />} />
         </Routes>
         <Footer />
       </div>

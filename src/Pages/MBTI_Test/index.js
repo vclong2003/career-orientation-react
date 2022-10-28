@@ -58,7 +58,11 @@ export default function MbtiPage() {
                   if (questionIndex === maxQuestionIndex) {
                     calculateResult(testPoint, (result) => {
                       console.log(result);
+                      //save data to session
                       setAnimationLayerVisibility("unset");
+                      setTimeout(() => {
+                        window.location.href = "/disctest";
+                      }, 3000);
                     });
                   }
                   setQuestionIndex(questionIndex + 1);
