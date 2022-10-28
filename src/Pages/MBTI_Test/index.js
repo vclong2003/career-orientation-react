@@ -59,6 +59,7 @@ export default function MbtiPage() {
                     calculateResult(testPoint, (result) => {
                       console.log(result);
                       //save data to session
+                      sessionStorage.setItem("mbtiResult", result);
                       setAnimationLayerVisibility("unset");
                       setTimeout(() => {
                         window.location.href = "/disctest";

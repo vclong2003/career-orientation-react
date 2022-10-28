@@ -1,0 +1,104 @@
+.container {
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
+}
+.background {
+  width: 100%;
+}
+.contentContainer {
+  position: absolute;
+  top: 0;
+  padding: 0;
+  width: 100%;
+}
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3%;
+}
+.title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 25px;
+  border-radius: 30px;
+  background: #edffdf;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.resultContainer {
+  padding: 0;
+  margin-top: 3%;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.resultCell {
+  background-color: #c5ded8;
+  padding: 35px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.viewMapleBtn {
+  font-size: 25px;
+  font-weight: 500;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: #fffdec;
+  color: #1e5a66;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones */
+  .background {
+    width: 200%;
+  }
+  .title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 22px;
+  }
+
+  .resultCell {
+    padding: 20px;
+    font-size: 22px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .viewMapleBtn {
+    font-size: 22px;
+    margin-top: 10px;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+  /* For tablets */
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  /* For small laptops */
+}

@@ -8,6 +8,7 @@ import Home from "./Pages/Home";
 import MbtiPage from "./Pages/MBTI_Test";
 import DiscTest from "./Pages/DISC_Test";
 import TestResultPage from "./Pages/TestResult";
+import ReviewPage from "./Pages/Review";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,6 +22,7 @@ root.render(
           <Route path="/mbtitest" element={<MbtiPage />} />
           <Route path="/disctest" element={<DiscTest />} />
           <Route path="/testresult" element={<TestResultPage />} />
+          <Route path="/review" element={<ReviewPage />} />
         </Routes>
         <Footer />
       </div>

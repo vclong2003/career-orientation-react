@@ -1,0 +1,35 @@
+.container {
+  background-image: url("../../Assets/Images/ReviewPage/background.png");
+  background-color: #71b18f;
+  min-height: 100vh;
+}
+
+.pageTitle {
+  padding-top: 10px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.reviewContainer {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 50%;
+}
+.reviewItem {
+  margin-bottom: 10px;
+  background-color: #fdffed;
+  border-radius: 20px;
+}
+.reviewToggleBtn {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  font-display: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 22px;
+  font-weight: 500;
+  color: #55605a;
+}

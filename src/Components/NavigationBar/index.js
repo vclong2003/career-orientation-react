@@ -17,7 +17,7 @@ export default function NavigationBar() {
           <Nav.Link href="/mbtitest" className={styles.navLink}>
             Personality Test
           </Nav.Link>
-          <Nav.Link href="#" className={styles.navLink}>
+          <Nav.Link href="/review" className={styles.navLink}>
             Review
           </Nav.Link>
           <Nav.Link href="#" className={styles.navLink}>
