@@ -10,6 +10,7 @@ import DiscTest from "./Pages/DISC_Test";
 import TestResultPage from "./Pages/TestResult";
 import ReviewPage from "./Pages/Review";
 import LoginPage from "./Pages/Login";
+import RegisterPage from "./Pages/Register";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,6 +26,7 @@ root.render(
           <Route path="/testresult" element={<TestResultPage />} />
           <Route path="/review" element={<ReviewPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
         <Footer />
       </div>
