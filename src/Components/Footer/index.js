@@ -11,7 +11,7 @@ export default function Footer() {
       <Row>
         <Col xs={12} lg={6} className={styles.itemContainer}>
           <Container>
-            <Row className={styles.title}>THE RIZE</Row>
+            <Row className={styles.title}>VCL</Row>
             <Row>
               <Button
                 className={styles.socialMediaBtn}
@@ -44,9 +44,9 @@ export default function Footer() {
           <Container>
             <Row className={styles.title}>CONTACTS</Row>
             <Row>
-              placeholder@test.mail
+              vclong2003@gmail.com
               <br />
-              (+84) 123456789
+              0888827768
             </Row>
           </Container>
         </Col>
@@ -54,9 +54,9 @@ export default function Footer() {
           <Container>
             <Row className={styles.title}>HEADQUARTER</Row>
             <Row>
-              2 Dương Khuê, Mai Dịch
+              Duong Dinh Nghe
               <br />
-              Cầu Giấy, Hà Nội
+              Cau Giay, Ha Noi
             </Row>
           </Container>
         </Col>

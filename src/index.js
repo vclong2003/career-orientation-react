@@ -9,7 +9,7 @@ import MbtiPage from "./Pages/MBTI_Test";
 import DiscTest from "./Pages/DISC_Test";
 import TestResultPage from "./Pages/TestResult";
 import ReviewPage from "./Pages/Review";
-import PremiumPackagePage from "./Pages/PremiumPackage";
+import LoginPage from "./Pages/Login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -24,7 +24,7 @@ root.render(
           <Route path="/disctest" element={<DiscTest />} />
           <Route path="/testresult" element={<TestResultPage />} />
           <Route path="/review" element={<ReviewPage />} />
-          <Route path="/premiumpackage" element={<PremiumPackagePage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
         <Footer />
       </div>
