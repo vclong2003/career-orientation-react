@@ -5,7 +5,9 @@ import Image from "react-bootstrap/Image";
 
 import Button from "react-bootstrap/Button";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 export default function Home() {
+  const navigate = useNavigate();
   const [visibility, setVisibility] = useState(false);
   const isMobile = window.screen.width <= 991 ? true : false;
   return (
@@ -39,7 +41,12 @@ export default function Home() {
             dolor. Tempor pariatur ad aliquip ulsbfjdslamco do aliqua.
             Reprehenderit deserunt eu est ut
           </p>
-          <Button className={styles.startBtn} href="/mbtitest">
+          <Button
+            className={styles.startBtn}
+            onClick={() => {
+              navigate("/mbtitest");
+            }}
+          >
             Start the journey
           </Button>
         </div>
@@ -106,7 +113,7 @@ export default function Home() {
           width={"100%"}
           className={styles.img_4}
         />
-        <Row className={styles.demoReviewContainer} fluid>
+        <Row className={styles.demoReviewContainer}>
           <Col className={styles.demoReviewCol}>
             <Image
               src={require("../../Assets/Images/Homepage/review_school_name.png")}

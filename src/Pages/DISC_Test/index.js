@@ -3,8 +3,11 @@ import styles from "./style.module.css";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { selection, ruleSet, result } from "../../Data/discData";
+import { useNavigate } from "react-router-dom";
 
 export default function DiscTest() {
+  const navigate = useNavigate();
+
   const [selectionIndex, setSelectionIndex] = useState(0);
   const [animationLayerVisibility, setAnimationLayerVisibility] =
     useState("hidden");
@@ -68,7 +71,8 @@ export default function DiscTest() {
                         setAnimationLayerVisibility("unset");
 
                         setTimeout(() => {
-                          window.location.href = "/testresult";
+                          // window.location.href = "/testresult";
+                          navigate("/testresult");
                         }, 3000);
                       });
                     }

@@ -3,9 +3,11 @@ import styles from "./style.module.css";
 import { points, question, testPoint } from "../../Data/mbtiData";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { generatePath } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function MbtiPage() {
+  const navigate = useNavigate();
+
   const [questionIndex, setQuestionIndex] = useState(0);
   const [animationLayerVisibility, setAnimationLayerVisibility] =
     useState("hidden");
@@ -63,7 +65,8 @@ export default function MbtiPage() {
                       sessionStorage.setItem("mbtiResult", result);
                       setAnimationLayerVisibility("unset");
                       setTimeout(() => {
-                        window.location.href = "/disctest";
+                        // window.location.href = "/disctest";
+                        navigate("/disctest");
                       }, 3000);
                     });
                   }

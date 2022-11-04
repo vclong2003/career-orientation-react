@@ -20,7 +20,7 @@ export default function TestResultPage() {
         <Container fluid className={styles.titleContainer}>
           <div className={styles.title}>What kind of maple are you?</div>
         </Container>
-        <Row fluid className={styles.resultContainer}>
+        <Row className={styles.resultContainer}>
           <Col className={styles.left} xl={4} xxl={4}>
             <div className={styles.resultCell}>
               MBTI result:
