@@ -50,3 +50,17 @@
   font-size: 20px;
   font-weight: 500;
 }
+.animationLayer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.648);
+}
+.doneText {
+  color: white;
+  font-size: 40px;
+}

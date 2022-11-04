@@ -6,6 +6,23 @@ import { selection, ruleSet, result } from "../../Data/discData";
 
 export default function DiscTest() {
   const [selectionIndex, setSelectionIndex] = useState(0);
+  const [animationLayerVisibility, setAnimationLayerVisibility] =
+    useState("hidden");
+  const maxSelectionIndex = selection.length - 1;
+  const draw = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: (i) => {
+      const delay = 1 + i * 0.5;
+      return {
+        pathLength: 1,
+        opacity: 1,
+        transition: {
+          pathLength: { delay, type: "spring", duration: 1, bounce: 0 },
+          opacity: { delay, duration: 0.1 },
+        },
+      };
+    },
+  };
 
   return (
     <Container className={styles.container} fluid>
@@ -15,7 +32,7 @@ export default function DiscTest() {
       />
       <ProgressBar
         animated
-        now={50}
+        now={(selectionIndex + 1) * 4.17}
         className={styles.progressBar}
         variant="info"
       />
@@ -31,15 +48,106 @@ export default function DiscTest() {
             Select the word that most describes you
           </Container>
           <Container fluid className={styles.answersContainer}>
-            {RenderTestItem(
-              selection[selectionIndex],
-              (selectionId, answer) => {
-                console.log(selectionId + " " + answer);
-                setSelectionIndex(selectionIndex + 1);
-              }
-            )}
+            {selectionIndex <= maxSelectionIndex
+              ? RenderTestItem(
+                  selection[selectionIndex],
+                  (selectionId, answer) => {
+                    const group = FindSelectionGroup(
+                      ruleSet,
+                      selectionId,
+                      answer
+                    );
+
+                    result[group]++;
+
+                    if (selectionIndex === maxSelectionIndex) {
+                      CalculateResult(result, (result) => {
+                        console.log(result);
+                        sessionStorage.setItem("discResult", result); //write result to session storage
+
+                        setAnimationLayerVisibility("unset");
+
+                        setTimeout(() => {
+                          window.location.href = "/testresult";
+                        }, 3000);
+                      });
+                    }
+
+                    setSelectionIndex(selectionIndex + 1);
+                  }
+                )
+              : null}
           </Container>
         </motion.div>
+      </AnimatePresence>
+      <AnimatePresence>
+        <div
+          className={styles.animationLayer}
+          style={{ visibility: animationLayerVisibility }}
+          key={animationLayerVisibility}
+        >
+          <motion.svg
+            initial="hidden"
+            animate="visible"
+            width="200px"
+            height="200px"
+          >
+            <motion.circle
+              cx="100"
+              cy="100"
+              r="80"
+              stroke="white"
+              variants={draw}
+              custom={0}
+              style={{
+                fill: "transparent",
+                strokeWidth: "10px",
+                strokeLinecap: "round",
+              }}
+            />
+            <motion.line
+              x1="50"
+              y1="110"
+              x2="90"
+              y2="150"
+              stroke="white"
+              variants={draw}
+              custom={1}
+              style={{
+                fill: "transparent",
+                strokeWidth: "10px",
+                strokeLinecap: "round",
+              }}
+            />
+            <motion.line
+              x1="160"
+              y1="80"
+              x2="90"
+              y2="150"
+              stroke="white"
+              variants={draw}
+              custom={2}
+              style={{
+                fill: "transparent",
+                strokeWidth: "10px",
+                strokeLinecap: "round",
+              }}
+            />
+          </motion.svg>
+          <motion.div
+            animate={{
+              opacity: [0, 1],
+              transition: {
+                type: "spring",
+                bounce: 0.5,
+                duration: 2,
+              },
+            }}
+            className={styles.doneText}
+          >
+            Done!
+          </motion.div>
+        </div>
       </AnimatePresence>
     </Container>
   );
@@ -93,6 +201,47 @@ function RenderTestItem(
       </Button>
     </>
   );
+}
+
+function FindSelectionGroup(
+  rules = [
+    {
+      group: "D",
+      rules: {
+        1: "B",
+      },
+    },
+  ],
+  selectionId = 0,
+  answer = ""
+) {
+  for (let i = 0; i < rules.length; i++) {
+    if (rules[i].rules[selectionId] === answer) {
+      return rules[i].group;
+    }
+  }
+}
+
+function CalculateResult(
+  rawResult = {
+    D: 0,
+    I: 0,
+    S: 0,
+    C: 0,
+  },
+  callback
+) {
+  let result = "D";
+  let maxPoint = 0;
+
+  for (const [key, value] of Object.entries(rawResult)) {
+    if (value > maxPoint) {
+      maxPoint = value;
+      result = key;
+    }
+  }
+
+  callback(result);
 }
 
 // function tempFuntion() {

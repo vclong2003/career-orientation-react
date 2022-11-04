@@ -3,6 +3,7 @@ import styles from "./style.module.css";
 import { points, question, testPoint } from "../../Data/mbtiData";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { generatePath } from "react-router-dom";
 
 export default function MbtiPage() {
   const [questionIndex, setQuestionIndex] = useState(0);
