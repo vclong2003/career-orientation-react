@@ -12,6 +12,16 @@ import ReviewPage from "./Pages/Review";
 import LoginPage from "./Pages/Login";
 import RegisterPage from "./Pages/Register";
 
+const pages = [
+  { path: "/", element: <Home /> },
+  { path: "/mbtitest", element: <MbtiPage /> },
+  { path: "/disctest", element: <DiscTest /> },
+  { path: "/testresult", element: <TestResultPage /> },
+  { path: "/review", element: <ReviewPage /> },
+  { path: "/login", element: <LoginPage /> },
+  { path: "/register", element: <RegisterPage /> },
+];
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -19,14 +29,11 @@ root.render(
       <div>
         <NavigationBar />
         <Routes>
-          {/* console.log(sessionStorage.getItem("mbtiResult")) */}
-          <Route path="/" element={<Home />} />
-          <Route path="/mbtitest" element={<MbtiPage />} />
-          <Route path="/disctest" element={<DiscTest />} />
-          <Route path="/testresult" element={<TestResultPage />} />
-          <Route path="/review" element={<ReviewPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          {pages.map((item, index) => {
+            return (
+              <Route path={item.path} element={item.element} key={index} />
+            );
+          })}
         </Routes>
         <Footer />
       </div>

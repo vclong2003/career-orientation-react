@@ -1,4 +1,4 @@
-const selection = [
+export const selection = [
   {
     id: 1,
     selection: {
@@ -217,7 +217,7 @@ const selection = [
   },
 ];
 
-const ruleSet = [
+export const ruleSet = [
   {
     group: "D",
     rules: {
@@ -335,3 +335,10 @@ const ruleSet = [
     },
   },
 ];
+
+export const result = {
+  D: 0,
+  I: 0,
+  S: 0,
+  C: 0,
+};
