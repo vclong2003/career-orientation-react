@@ -342,3 +342,10 @@ export const result = {
   S: 0,
   C: 0,
 };
+
+export const resultDescription = {
+  D: "Dominance: A person primarily in this DiSC quadrant places emphasis on accomplishing results and “seeing the big picture.” They are confident, sometimes blunt, outspoken, and demanding.",
+  I: "Influence: A person in this DiSC quadrant places emphasis on influencing or persuading others. They tend to be enthusiastic, optimistic, open, trusting, and energetic.",
+  S: "Steadiness: A person in this DiSC quadrant places emphasis on cooperation, sincerity, loyalty, and dependability. They tend to have calm, deliberate dispositions, and don’t like to be rushed.",
+  C: "Conscientiousness: A person in this DiSC quadrant places emphasis on quality and accuracy, expertise and competency. They enjoy their independence, demand the details, and often fear being wrong. ",
+};
