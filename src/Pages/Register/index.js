@@ -1,10 +1,15 @@
-import { Container } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import styles from "./style.module.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
+import { Register } from "../../Services/Firebase";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
+  const navigate = useNavigate();
+  const [loadingVisibility, setloadingVisibility] = useState("hidden");
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -18,17 +23,33 @@ export default function RegisterPage() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(state);
-
-    fetch("https://635d3190cb6cf98e56af2a5f.mockapi.io/api/v2/users", {
-      method: "POST",
-      body: JSON.stringify(),
-    });
+    setloadingVisibility("unset");
+    Register(
+      state.name,
+      state.email,
+      state.password,
+      (user) => {
+        console.log(user);
+        setTimeout(() => {
+          setloadingVisibility("hidden");
+        }, 1000);
+      },
+      (errCode) => {
+        console.log(errCode);
+        setTimeout(() => {
+          setloadingVisibility("hidden");
+        }, 1000);
+      }
+    );
   };
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit}>
+    <Container className={styles.container} fluid>
+      <Image
+        src={require("../../Assets/Images/AuthPage/background.png")}
+        className={styles.background}
+      />
+      <Form onSubmit={handleSubmit} className={styles.form}>
         <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -79,6 +100,29 @@ export default function RegisterPage() {
           Submit
         </Button>
       </Form>
+      <Container
+        className={styles.loadingLayer}
+        fluid
+        style={{ visibility: loadingVisibility }}
+      >
+        <motion.div
+          className={styles.box}
+          whileInView={{
+            scale: [1, 2, 2, 1, 1],
+            rotate: [0, 0, 180, 180, 0],
+            borderRadius: ["0%", "0%", "50%", "50%", "0%"],
+          }}
+          transition={{
+            duration: 1.5,
+            ease: "easeInOut",
+            times: [0, 0.2, 0.5, 0.8, 1],
+            repeat: Infinity,
+            repeatDelay: 0.8,
+          }}
+        >
+          VCL
+        </motion.div>
+      </Container>
     </Container>
   );
 }

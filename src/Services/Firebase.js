@@ -1,7 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,20 +25,35 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const auth = getAuth();
 
 export function Login(email, password, callback, errorCallback) {
-  const auth = getAuth();
-  createUserWithEmailAndPassword(auth, email, password)
+  signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
       callback(user);
-      // ...
     })
     .catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
       errorCallback(errorCode);
-      // ..
+    });
+}
+
+export function Register(name, email, password, callback, errorCallback) {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      }).then(() => {
+        // Profile updated!
+        callback(user);
+      });
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      errorCallback(errorCode);
     });
 }
