@@ -1,8 +1,11 @@
 {
   "hosting": {
-    "site": "vclorientation",
     "public": "build",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "**",

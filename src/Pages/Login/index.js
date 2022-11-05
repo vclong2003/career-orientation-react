@@ -49,7 +49,7 @@ export default function LoginPage() {
       />
       <Form onSubmit={handleSubmitForm} className={styles.form}>
         <Form.Group className="mb-3">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -67,13 +67,17 @@ export default function LoginPage() {
             onChange={handlePwdChange}
           />
         </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
         <Button variant="primary" type="submit">
           Login
         </Button>
-        <Form.Text>Or, create new account!</Form.Text>
+        <Form.Text
+          className={styles.regText}
+          onClick={() => {
+            navigate("/register");
+          }}
+        >
+          Or, create new account!
+        </Form.Text>
       </Form>
       <Container
         className={styles.loadingLayer}

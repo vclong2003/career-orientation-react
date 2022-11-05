@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./style.module.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -6,6 +6,13 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function NavigationBar() {
+  // useEffect(() => {
+  //   console.log("called");
+  //   return () => {
+  //     console.log("called 2");
+  //   };
+  // });
+
   const navigate = useNavigate();
   return (
     <Navbar variant="light" expand="lg" sticky="top" className={styles.navBar}>

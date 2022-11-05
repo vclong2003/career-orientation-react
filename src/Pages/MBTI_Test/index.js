@@ -1,7 +1,7 @@
 import { Button, Container, Image, ProgressBar } from "react-bootstrap";
 import styles from "./style.module.css";
 import { points, question, testPoint } from "../../Data/mbtiData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 

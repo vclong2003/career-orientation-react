@@ -6,6 +6,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  GoogleAuthProvider,
+  onAuthStateChanged,
 } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -56,4 +58,18 @@ export function Register(name, email, password, callback, errorCallback) {
       const errorCode = error.code;
       errorCallback(errorCode);
     });
+}
+
+export function getCurrentUserInfo() {
+  const user = auth.currentUser;
+  if (user !== null) {
+    // The user object has basic properties such as display name, email, etc.
+    const displayName = user.displayName;
+    const email = user.email;
+    const photoURL = user.photoURL;
+    const emailVerified = user.emailVerified;
+
+    const userInfo = { displayName, email, photoURL, emailVerified };
+    return userInfo;
+  }
 }
