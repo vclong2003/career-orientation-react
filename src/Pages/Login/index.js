@@ -1,9 +1,15 @@
 import { useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
+import { Login } from "../../Services/Firebase";
 import styles from "./style.module.css";
+import { motion } from "framer-motion";
+
 export default function LoginPage() {
+  const navigate = useNavigate();
+  const [loadingVisibility, setloadingVisibility] = useState("hidden");
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
 
@@ -17,11 +23,22 @@ export default function LoginPage() {
 
   const handleSubmitForm = (evt) => {
     evt.preventDefault();
-    console.log(email + "\n" + pwd);
+    // console.log(email + "\n" + pwd);
+    setloadingVisibility("unset");
+    Login(
+      email,
+      pwd,
+      (user) => {
+        console.log(user);
+      },
+      (msg) => {
+        console.log(msg);
+      }
+    );
   };
   return (
-    <Container>
-      <Form onSubmit={handleSubmitForm}>
+    <Container className={styles.container} fluid>
+      <Form onSubmit={handleSubmitForm} className={styles.form}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -51,6 +68,29 @@ export default function LoginPage() {
           Submit
         </Button>
       </Form>
+      <Container
+        className={styles.loadingLayer}
+        fluid
+        style={{ visibility: loadingVisibility }}
+      >
+        <motion.div
+          className={styles.box}
+          whileInView={{
+            scale: [1, 2, 2, 1, 1],
+            rotate: [0, 0, 180, 180, 0],
+            borderRadius: ["0%", "0%", "50%", "50%", "0%"],
+          }}
+          transition={{
+            duration: 1.5,
+            ease: "easeInOut",
+            times: [0, 0.2, 0.5, 0.8, 1],
+            repeat: Infinity,
+            repeatDelay: 0.8,
+          }}
+        >
+          VCL
+        </motion.div>
+      </Container>
     </Container>
   );
 }

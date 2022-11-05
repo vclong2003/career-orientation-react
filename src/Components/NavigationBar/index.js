@@ -44,7 +44,14 @@ export default function NavigationBar() {
           >
             Workspace
           </Nav.Link>
-          <Button className={styles.authBtn}>Login/Register</Button>
+          <Button
+            className={styles.authBtn}
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login/Register
+          </Button>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

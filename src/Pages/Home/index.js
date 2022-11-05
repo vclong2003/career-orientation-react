@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import styles from "./style.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
-
 import Button from "react-bootstrap/Button";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+
+
 export default function Home() {
   const navigate = useNavigate();
   const [visibility, setVisibility] = useState(false);
