@@ -11,8 +11,10 @@ import TestResultPage from "./Pages/TestResult";
 import ReviewPage from "./Pages/Review";
 import LoginPage from "./Pages/Login";
 import RegisterPage from "./Pages/Register";
+import DemoPage from "./Pages/DemoPage";
 
 const pages = [
+  { path: "/demo", element: <DemoPage /> },
   { path: "/", element: <Home /> },
   { path: "/mbtitest", element: <MbtiPage /> },
   { path: "/disctest", element: <DiscTest /> },
