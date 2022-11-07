@@ -28,13 +28,11 @@ export default function LoginPage() {
       email,
       pwd,
       (user) => {
-        console.log(user);
         setTimeout(() => {
           navigate("/");
         }, 1000);
       },
       (msg) => {
-        console.log(msg);
         setTimeout(() => {
           setloadingVisibility("hidden");
         }, 1000);

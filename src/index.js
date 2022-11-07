@@ -25,8 +25,15 @@ const pages = [
 ];
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
+    <Index />
+  </React.StrictMode>
+);
+
+function Index() {
+  return (
     <Router>
       <div>
         <NavigationBar />
@@ -40,5 +47,5 @@ root.render(
         <Footer />
       </div>
     </Router>
-  </React.StrictMode>
-);
+  );
+}

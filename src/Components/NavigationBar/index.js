@@ -1,18 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./style.module.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { Logout, UserContext, UserProvider } from "../../Services/Firebase";
 
 export default function NavigationBar() {
-  // useEffect(() => {
-  //   console.log("called");
-  //   return () => {
-  //     console.log("called 2");
-  //   };
-  // });
-
   const navigate = useNavigate();
   return (
     <Navbar variant="light" expand="lg" sticky="top" className={styles.navBar}>
@@ -51,16 +45,39 @@ export default function NavigationBar() {
           >
             Workspace
           </Nav.Link>
-          <Button
-            className={styles.authBtn}
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            Login/Register
-          </Button>
+          <UserProvider>
+            <RenderBtn navigator={navigate} />
+          </UserProvider>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
+  );
+}
+
+function RenderBtn({ navigator }) {
+  const user = useContext(UserContext);
+  return (
+    <>
+      {user == null ? (
+        <Button
+          className={styles.authBtn}
+          onClick={() => {
+            navigator("/login");
+          }}
+        >
+          Login/Register
+        </Button>
+      ) : (
+        <Button
+          className={styles.authBtn}
+          onClick={() => {
+            // navigator("#");
+            Logout();
+          }}
+        >
+          {user.displayName ? user.displayName : "Profile"}
+        </Button>
+      )}
+    </>
   );
 }

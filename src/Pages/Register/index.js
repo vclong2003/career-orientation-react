@@ -29,13 +29,11 @@ export default function RegisterPage() {
       state.email,
       state.password,
       (user) => {
-        console.log(user);
         setTimeout(() => {
-          setloadingVisibility("hidden");
+          navigate("/");
         }, 1000);
       },
       (errCode) => {
-        console.log(errCode);
         setTimeout(() => {
           setloadingVisibility("hidden");
         }, 1000);

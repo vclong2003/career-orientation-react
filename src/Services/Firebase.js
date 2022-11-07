@@ -8,7 +8,9 @@ import {
   updateProfile,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
+import React, { useEffect, useState } from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -60,7 +62,7 @@ export function Register(name, email, password, callback, errorCallback) {
     });
 }
 
-export function getCurrentUserInfo() {
+export function getCurrentUserInfo(callback) {
   const user = auth.currentUser;
   if (user !== null) {
     // The user object has basic properties such as display name, email, etc.
@@ -70,6 +72,41 @@ export function getCurrentUserInfo() {
     const emailVerified = user.emailVerified;
 
     const userInfo = { displayName, email, photoURL, emailVerified };
-    return userInfo;
+    callback(userInfo);
+  } else {
+    callback(null);
   }
+}
+
+export function Logout(callback) {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+      callback();
+    })
+    .catch((error) => {
+      // An error happened.
+    });
+}
+
+export const UserContext = React.createContext();
+export function UserProvider({ children }) {
+  const [userObj, setUserObj] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        setUserObj(user);
+      } else {
+        // User is signed out
+        setUserObj(null);
+      }
+    });
+  }, []);
+
+  return (
+    <UserContext.Provider value={userObj}>{children}</UserContext.Provider>
+  );
 }
