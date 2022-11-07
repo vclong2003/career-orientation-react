@@ -12,6 +12,7 @@ import ReviewPage from "./Pages/Review";
 import LoginPage from "./Pages/Login";
 import RegisterPage from "./Pages/Register";
 import DemoPage from "./Pages/DemoPage";
+import { UserProvider } from "./Services/Firebase";
 
 const pages = [
   { path: "/demo", element: <DemoPage /> },
@@ -35,7 +36,7 @@ root.render(
 function Index() {
   return (
     <Router>
-      <div>
+      <UserProvider>
         <NavigationBar />
         <Routes>
           {pages.map((item, index) => {
@@ -45,7 +46,7 @@ function Index() {
           })}
         </Routes>
         <Footer />
-      </div>
+      </UserProvider>
     </Router>
   );
 }
