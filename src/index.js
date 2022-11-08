@@ -12,12 +12,12 @@ import ReviewPage from "./Pages/Review";
 import LoginPage from "./Pages/Login";
 import RegisterPage from "./Pages/Register";
 import DemoPage from "./Pages/DemoPage";
-import AdminPage from "./Pages/Admin";
+import TempPage from "./Pages/TempPage";
 
 const pages = [
+  { path: "/temp", element: <TempPage /> },
   { path: "/demo", element: <DemoPage /> },
   { path: "/", element: <Home /> },
-  { path: "/admin", element: <AdminPage /> },
   { path: "/mbtitest", element: <MbtiPage /> },
   { path: "/disctest", element: <DiscTest /> },
   { path: "/testresult", element: <TestResultPage /> },

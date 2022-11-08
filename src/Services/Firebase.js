@@ -11,6 +11,14 @@ import {
   signOut,
 } from "firebase/auth";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+  addDoc,
+} from "firebase/firestore";
 
 import React, { useEffect, useState } from "react";
 
@@ -134,3 +142,15 @@ export function UploadFile(
       errorCallback(err);
     });
 }
+
+const db = getFirestore(app);
+export async function getDataFromFirestore() {
+  const q = query(collection(db, "Majors"));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  });
+}
+
+export function addDataToFirestore() {}

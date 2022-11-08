@@ -77,7 +77,7 @@ export default function DemoPage() {
                 </Accordion.Header>
                 <Accordion.Body>
                   <Row>
-                    {value.img.length == 0
+                    {value.img.length === 0
                       ? "No img"
                       : value.img.map((img, _index) => {
                           return (
