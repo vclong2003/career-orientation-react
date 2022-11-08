@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { Login } from "../../Services/Firebase";
 import styles from "./style.module.css";
 import { motion } from "framer-motion";
+import LoadingLayer from "../../Components/LoadingLayer";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [loadingVisibility, setloadingVisibility] = useState("hidden");
+  const [loadingVisibility, setloadingVisibility] = useState(false);
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
 
@@ -23,7 +24,7 @@ export default function LoginPage() {
 
   const handleSubmitForm = (evt) => {
     evt.preventDefault();
-    setloadingVisibility("unset");
+    setloadingVisibility(true);
     Login(
       email,
       pwd,
@@ -34,7 +35,7 @@ export default function LoginPage() {
       },
       (msg) => {
         setTimeout(() => {
-          setloadingVisibility("hidden");
+          setloadingVisibility(false);
         }, 1000);
       }
     );
@@ -77,29 +78,7 @@ export default function LoginPage() {
           Or, create new account!
         </Form.Text>
       </Form>
-      <Container
-        className={styles.loadingLayer}
-        fluid
-        style={{ visibility: loadingVisibility }}
-      >
-        <motion.div
-          className={styles.box}
-          whileInView={{
-            scale: [1, 2, 2, 1, 1],
-            rotate: [0, 0, 180, 180, 0],
-            borderRadius: ["0%", "0%", "50%", "50%", "0%"],
-          }}
-          transition={{
-            duration: 1.5,
-            ease: "easeInOut",
-            times: [0, 0.2, 0.5, 0.8, 1],
-            repeat: Infinity,
-            repeatDelay: 0.8,
-          }}
-        >
-          VCL
-        </motion.div>
-      </Container>
+      <LoadingLayer visibility={loadingVisibility} />
     </Container>
   );
 }
