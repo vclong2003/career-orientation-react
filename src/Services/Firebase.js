@@ -10,7 +10,10 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+
 import React, { useEffect, useState } from "react";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -109,4 +112,26 @@ export function UserProvider({ children }) {
   return (
     <UserContext.Provider value={userObj}>{children}</UserContext.Provider>
   );
+}
+
+const storage = getStorage();
+export function UploadFile(
+  folder = "",
+  file,
+  callback,
+  errorCallback = () => {}
+) {
+  const storageRef = ref(storage, `${folder}/${file.name}`);
+
+  // 'file' comes from the Blob or File API
+  uploadBytes(storageRef, file)
+    .then((snapshot) => {
+      console.log("Uploaded a blob or file!");
+      getDownloadURL(snapshot.ref).then((url) => {
+        callback(url);
+      });
+    })
+    .catch((err) => {
+      errorCallback(err);
+    });
 }
