@@ -9,8 +9,8 @@
   font-weight: 800;
   cursor: pointer;
 }
-.navColapse {
-  justify-content: flex-end;
+.nav {
+  margin-left: auto;
 }
 .navLink {
   font-size: 20px;

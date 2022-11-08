@@ -12,11 +12,12 @@ import ReviewPage from "./Pages/Review";
 import LoginPage from "./Pages/Login";
 import RegisterPage from "./Pages/Register";
 import DemoPage from "./Pages/DemoPage";
-import { UserProvider } from "./Services/Firebase";
+import AdminPage from "./Pages/Admin";
 
 const pages = [
   { path: "/demo", element: <DemoPage /> },
   { path: "/", element: <Home /> },
+  { path: "/admin", element: <AdminPage /> },
   { path: "/mbtitest", element: <MbtiPage /> },
   { path: "/disctest", element: <DiscTest /> },
   { path: "/testresult", element: <TestResultPage /> },
@@ -36,17 +37,13 @@ root.render(
 function Index() {
   return (
     <Router>
-      <UserProvider>
-        <NavigationBar />
-        <Routes>
-          {pages.map((item, index) => {
-            return (
-              <Route path={item.path} element={item.element} key={index} />
-            );
-          })}
-        </Routes>
-        <Footer />
-      </UserProvider>
+      <NavigationBar />
+      <Routes>
+        {pages.map((item, index) => {
+          return <Route path={item.path} element={item.element} key={index} />;
+        })}
+      </Routes>
+      <Footer />
     </Router>
   );
 }
