@@ -14,10 +14,24 @@ export default function DemoPage() {
   const [imgFile, setImgFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
-  const [dataChanged, setDataChanged] = useState();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const fetchListUser = () => {
+    fetch("https://635d3190cb6cf98e56af2a5f.mockapi.io/api/v2/users", {
+      method: "GET",
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setListUser(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const postImg = (id, url, callback) => {
     fetch(
@@ -36,7 +50,6 @@ export default function DemoPage() {
         return response.json();
       })
       .then((result) => {
-        console.log("Success:", result);
         callback(result);
       })
       .catch((error) => {
@@ -46,19 +59,8 @@ export default function DemoPage() {
   };
 
   useEffect(() => {
-    fetch("https://635d3190cb6cf98e56af2a5f.mockapi.io/api/v2/users", {
-      method: "GET",
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setListUser(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [dataChanged]);
+    fetchListUser();
+  }, []);
 
   return (
     <>
@@ -136,7 +138,7 @@ export default function DemoPage() {
                 UploadFile("Demo", imgFile, (url) => {
                   postImg(currentId, url, () => {
                     setLoading(false);
-                    setDataChanged(imgFile.name);
+                    fetchListUser();
                     handleClose();
                   });
                 });

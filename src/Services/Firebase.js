@@ -126,7 +126,6 @@ export function UploadFile(
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, file)
     .then((snapshot) => {
-      console.log("Uploaded a blob or file!");
       getDownloadURL(snapshot.ref).then((url) => {
         callback(url);
       });
