@@ -13,11 +13,13 @@ export default function DemoPage() {
   const [currentId, setCurrentId] = useState();
   const [imgFile, setImgFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [show, setShow] = useState(false);
 
+  //modal visibility
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  //get users from API
   const fetchListUser = () => {
     fetch("https://635d3190cb6cf98e56af2a5f.mockapi.io/api/v2/users", {
       method: "GET",
@@ -33,6 +35,7 @@ export default function DemoPage() {
       });
   };
 
+  //post image url to API
   const postImg = (id, url, callback) => {
     fetch(
       `https://635d3190cb6cf98e56af2a5f.mockapi.io/api/v2/users/${id}/img`,
@@ -64,7 +67,7 @@ export default function DemoPage() {
 
   return (
     <>
-      <Container style={{ marginTop: "30px" }}>
+      <Container style={{ marginTop: "30px", marginBottom: "30px" }}>
         <Accordion>
           {listUser.map((value, index) => {
             return (
@@ -136,6 +139,7 @@ export default function DemoPage() {
               if (imgFile != null) {
                 setLoading(true);
                 UploadFile("Demo", imgFile, (url) => {
+                  //Upload file to firebase
                   postImg(currentId, url, () => {
                     setLoading(false);
                     fetchListUser();
