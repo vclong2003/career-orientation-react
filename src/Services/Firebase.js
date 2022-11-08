@@ -100,6 +100,7 @@ export function Logout(callback) {
     });
 }
 
+//-------UserProvider-----------------------------------------------------
 export const UserContext = React.createContext();
 export function UserProvider({ children }) {
   const [userObj, setUserObj] = useState(null);
@@ -122,6 +123,7 @@ export function UserProvider({ children }) {
   );
 }
 
+//------Storage--------------------------------------------------------------
 const storage = getStorage();
 export function UploadFile(
   folder = "",
@@ -143,14 +145,17 @@ export function UploadFile(
     });
 }
 
+//-----Firestore-------------------------------------------------------------
 const db = getFirestore(app);
-export async function getDataFromFirestore() {
-  const q = query(collection(db, "Majors"));
+export async function getDataFromFirestore(collection = "") {
+  const q = query(collection(db, collection));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
     console.log(doc.id, " => ", doc.data());
   });
 }
-
-export function addDataToFirestore() {}
+export async function addDataToFirestore(collection = "", data = {}) {
+  const docRef = await addDoc(collection(db, collection), data);
+  console.log("Document written with ID: ", docRef.id);
+}
