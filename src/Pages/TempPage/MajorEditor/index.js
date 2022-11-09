@@ -93,6 +93,7 @@ export default function MajorEditor() {
         onHide={() => {
           setShowModal(false);
         }}
+        style={{ overflow: "hidden" }}
       >
         <Modal.Body>
           <Form>
@@ -124,9 +125,6 @@ export default function MajorEditor() {
                 }}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -163,56 +161,52 @@ function PersonalityTypesEditor({ selections = [], selected = [], callback }) {
   return (
     <Row>
       <Col xl={4}>
-        <Form.Control
-          type="text"
-          onFocus={() => {
-            setShowDropdown(true);
-          }}
-        />
-        <Dropdown.Menu show={showDropdown}>
-          {selections.map((item, index) => {
-            return (
-              <Dropdown.Item
-                eventKey={index}
-                key={index}
-                onClick={() => {
-                  setSelecting([...selecting, item]);
-                  setShowDropdown(false);
-                }}
-              >
-                {item}
-              </Dropdown.Item>
-            );
-          })}
-        </Dropdown.Menu>
+        <Dropdown autoClose="outside">
+          <Dropdown.Toggle>Add</Dropdown.Toggle>
+
+          <Dropdown.Menu show={showDropdown}>
+            <Container>
+              <Form.Control type="text" />
+            </Container>
+            {selections.map((item, index) => {
+              return (
+                <Dropdown.Item
+                  eventKey={index}
+                  key={index}
+                  onClick={() => {
+                    setSelecting([...selecting, item]);
+                    setShowDropdown(false);
+                  }}
+                >
+                  {item}
+                </Dropdown.Item>
+              );
+            })}
+          </Dropdown.Menu>
+        </Dropdown>
       </Col>
-      <Col xl={8}>
-        <Row>
-          {/* RENDER ITEMS HERE */}
-          {selected.map((item, index) => {
-            return (
-              <Col xl={5} key={index}>
-                <Card>
-                  <Card.Body
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    {item}
-                    <CloseButton
-                      onClick={() => {
-                        setSelecting(
-                          selecting.filter((_item) => _item !== item)
-                        );
-                      }}
-                    />
-                  </Card.Body>
-                </Card>
-              </Col>
-            );
-          })}
-        </Row>
+      <Col
+        xl={8}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          overflowX: "scroll",
+          justifyContent: "flex-start",
+        }}
+      >
+        {/* RENDER ITEMS HERE */}
+        {selected.map((item, index) => {
+          return (
+            <div style={{ minWidth: "90px" }} key={index}>
+              {item}
+              <CloseButton
+                onClick={() => {
+                  setSelecting(selecting.filter((_item) => _item !== item));
+                }}
+              />
+            </div>
+          );
+        })}
       </Col>
     </Row>
   );
