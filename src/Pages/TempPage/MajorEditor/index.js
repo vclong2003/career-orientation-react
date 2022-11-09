@@ -19,7 +19,14 @@ import { resultDescription as mbtiResDescriptions } from "../../../Data/mbtiData
 import { resultDescription as discResDescriptions } from "../../../Data/discData";
 
 export default function MajorEditor() {
+  //---------------------------------------initial data state
   const [listData, setListData] = useState([]);
+  const [mbtiOptions, setMbtiOptions] = useState([]);
+  const [discOptions, setDiscOptions] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  //---------------------------------------dynamic data states
+  const [currentId, setCurrentId] = useState(null);
   const [dataSchema, setDataSchema] = useState({
     description: "",
     imageUrl: "",
@@ -27,13 +34,13 @@ export default function MajorEditor() {
     suitableDisc: [],
     suitableMbti: [],
   });
-  const [mbtiOptions, setMbtiOptions] = useState([]);
-  const [selectedMbtiOptions, setSelectedMbtiOptions] = useState([]);
-  const [discOptions, setDiscOptions] = useState([]);
   const [selectedDiscOption, setSelectedDiscOption] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [currentId, setCurrentId] = useState(null);
+  const [selectedMbtiOptions, setSelectedMbtiOptions] = useState([]);
+  const [imgUrl, setImgUrl] = useState("");
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
 
+  //-----------------------------------Initial data loading
   useEffect(() => {
     getDataFromFirestore("Majors").then((result) => {
       setListData(result);
@@ -52,11 +59,28 @@ export default function MajorEditor() {
     setDiscOptions(_tempArr);
   }, []);
 
-  const handleSubmit = () => {};
+  useEffect(() => {
+    console.log(name);
+  }, [name]);
+
+  const handleAddMajor = () => {};
+  const handleUpdateMajor = () => {};
+  const handleDeleteMajor = () => {};
 
   return (
     <>
       <Container>
+        <Container fluid>
+          <Button
+            onClick={() => {
+              setCurrentId(null);
+              setShowModal(true);
+            }}
+          >
+            Add
+          </Button>
+        </Container>
+        {/* ---------------------------------------Show current majors */}
         <Accordion>
           {listData.map((item, index) => {
             return (
@@ -88,6 +112,7 @@ export default function MajorEditor() {
           })}
         </Accordion>
       </Container>
+      {/* -----------------------------------------Modal, containing form */}
       <Modal
         show={showModal}
         onHide={() => {
@@ -99,14 +124,31 @@ export default function MajorEditor() {
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control
+                type="text"
+                value={name}
+                onChange={(evt) => {
+                  setName(evt.target.value);
+                }}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea" rows={4} />
+              <Form.Control
+                as="textarea"
+                rows={4}
+                value={desc}
+                onChange={(evt) => {
+                  setDesc(evt.target.value);
+                }}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Control type="file" accept="image/*" />
             </Form.Group>
             {/* 3rd GROUP */}
             <Form.Group className="mb-3">
+              <Form.Label>Suitable MBTI types</Form.Label>
               <PersonalityTypesEditor
                 selections={mbtiOptions}
                 selected={selectedMbtiOptions}
@@ -117,6 +159,7 @@ export default function MajorEditor() {
             </Form.Group>
             {/* 4rd GROUP */}
             <Form.Group className="mb-3">
+              <Form.Label>Suitable DISC types</Form.Label>
               <PersonalityTypesEditor
                 selections={discOptions}
                 selected={selectedDiscOption}
