@@ -857,7 +857,7 @@ export const question = [
     B: "SOFT",
   },
 ];
-const resultDescription = [
+export const resultDescription = [
   {
     type: "ENFP",
     description:

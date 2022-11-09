@@ -3,7 +3,7 @@ import MajorEditor from "./MajorEditor";
 
 export default function TempPage() {
   return (
-    <Container>
+    <Container style={{ minHeight: "100vh" }}>
       <MajorEditor />
     </Container>
   );

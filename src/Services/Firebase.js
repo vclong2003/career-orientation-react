@@ -145,9 +145,19 @@ export function UploadFile(
 
 //------------------------------------------------------------------Firestore
 const db = getFirestore(app);
-export async function getDataFromFirestore(collectionName = "") {
+export async function getDataFromFirestore(
+  collectionName = "",
+  condition = null
+) {
   const result = [];
-  const q = query(collection(db, collectionName));
+  const q =
+    condition == null
+      ? query(collection(db, collectionName))
+      : query(
+          collection(db, collectionName),
+          where(condition.fieldPath, condition.operator, condition.value)
+        );
+
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     result.push({ id: doc.id, data: doc.data() });
