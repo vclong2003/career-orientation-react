@@ -40,8 +40,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const auth = getAuth();
 
+//--------------------------------------------------------------Authenthication
+const auth = getAuth();
 export function Login(email, password, callback, errorCallback) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -54,7 +55,6 @@ export function Login(email, password, callback, errorCallback) {
       errorCallback(errorCode);
     });
 }
-
 export function Register(name, email, password, callback, errorCallback) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -72,7 +72,6 @@ export function Register(name, email, password, callback, errorCallback) {
       errorCallback(errorCode);
     });
 }
-
 export function getCurrentUserInfo(callback) {
   const user = auth.currentUser;
   if (user !== null) {
@@ -88,7 +87,6 @@ export function getCurrentUserInfo(callback) {
     callback(null);
   }
 }
-
 export function Logout(callback) {
   signOut(auth)
     .then(() => {
@@ -100,7 +98,7 @@ export function Logout(callback) {
     });
 }
 
-//-------UserProvider-----------------------------------------------------
+//------------------------------------------------------------UserProvider
 export const UserContext = React.createContext();
 export function UserProvider({ children }) {
   const [userObj, setUserObj] = useState(null);
@@ -123,7 +121,7 @@ export function UserProvider({ children }) {
   );
 }
 
-//------Storage--------------------------------------------------------------
+//-------------------------------------------------------------------Storage
 const storage = getStorage();
 export function UploadFile(
   folder = "",
@@ -145,17 +143,18 @@ export function UploadFile(
     });
 }
 
-//-----Firestore-------------------------------------------------------------
+//------------------------------------------------------------------Firestore
 const db = getFirestore(app);
-export async function getDataFromFirestore(collection = "") {
-  const q = query(collection(db, collection));
+export async function getDataFromFirestore(collectionName = "") {
+  const result = [];
+  const q = query(collection(db, collectionName));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
+    result.push({ id: doc.id, data: doc.data() });
   });
+  return result;
 }
-export async function addDataToFirestore(collection = "", data = {}) {
-  const docRef = await addDoc(collection(db, collection), data);
+export async function addDataToFirestore(collectionName = "", data = {}) {
+  const docRef = await addDoc(collection(db, collectionName), data);
   console.log("Document written with ID: ", docRef.id);
 }

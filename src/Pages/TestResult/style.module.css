@@ -10,16 +10,14 @@
   position: absolute;
   top: 0;
   padding: 0;
-  width: 100%;
 }
 .titleContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 3%;
+  margin-top: 2%;
 }
 .title {
-  margin-top: 10px;
   margin-bottom: 10px;
   padding: 10px;
   padding-left: 30px;
@@ -32,9 +30,9 @@
 
 .resultContainer {
   padding: 0;
-  margin-top: 3%;
+  margin-top: 2%;
+  justify-content: center;
 }
-
 .left {
   display: flex;
   flex-direction: column;
@@ -49,26 +47,60 @@
   border-radius: 20px;
   margin-bottom: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 70%;
 }
 
-.middle {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.viewMapleBtn {
-  font-size: 25px;
-  font-weight: 500;
-  padding-left: 25px;
-  padding-right: 25px;
-  background-color: #fffdec;
-  color: #1e5a66;
-  border: none;
-  outline: none;
-  border-radius: 25px;
+.right {
+  background-color: #c5ded8;
+  border-radius: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+.suitableMajorsTitle {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+}
+.suitableMajorsTitle button {
+  border-radius: 20px;
+  background-color: #398d49;
+  font-weight: 400;
+  font-size: 16px;
+}
+.suitableMajorItemContainer {
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+.suitableMajorItemContainer::-webkit-scrollbar {
+  width: 10px;
+}
+.suitableMajorItemContainer::-webkit-scrollbar-track {
+  background-color: transparent;
+  margin-bottom: 15px;
+}
+.suitableMajorItemContainer::-webkit-scrollbar-thumb {
+  background-color: #edffdf;
+  border-radius: 10px;
+}
+.suitableMajorItem {
+  background-color: #edffdf;
+  border-radius: 20px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.suitableMajorItemName {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.suitableMajorItemImg {
+  border-radius: 15px;
+  object-fit: cover;
+}
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones */
   .background {
@@ -89,11 +121,6 @@
     margin-bottom: 10px;
     padding-left: 30px;
     padding-right: 30px;
-  }
-
-  .viewMapleBtn {
-    font-size: 22px;
-    margin-top: 10px;
   }
 }
 @media only screen and (min-width: 769px) and (max-width: 991px) {
