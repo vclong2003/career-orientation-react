@@ -7,12 +7,14 @@ import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 import styles from "./style.module.css";
 import { UploadFile } from "../../Services/Firebase";
+import RichTextEditor from "../../Components/RichTextEditor";
 
 export default function DemoPage() {
   const [listUser, setListUser] = useState([]);
   const [currentId, setCurrentId] = useState();
   const [imgFile, setImgFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [content, setContent] = useState();
 
   //modal visibility
   const [show, setShow] = useState(false);
@@ -68,6 +70,17 @@ export default function DemoPage() {
   return (
     <>
       <Container style={{ marginTop: "30px", marginBottom: "30px" }}>
+        <RichTextEditor
+          onChangeCallback={(data) => {
+            setContent(data);
+          }}
+        />
+
+        <Container
+          dangerouslySetInnerHTML={{ __html: content }}
+          className={styles.para}
+        ></Container>
+
         <Accordion>
           {listUser.map((value, index) => {
             return (

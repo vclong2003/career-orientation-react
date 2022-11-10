@@ -8,7 +8,6 @@ import {
 } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Card from "react-bootstrap/Card";
 import Dropdown from "react-bootstrap/Dropdown";
 import Accordion from "react-bootstrap/Accordion";
 import Modal from "react-bootstrap/Modal";
@@ -19,13 +18,13 @@ import { resultDescription as mbtiResDescriptions } from "../../../Data/mbtiData
 import { resultDescription as discResDescriptions } from "../../../Data/discData";
 
 export default function MajorEditor() {
-  //---------------------------------------initial data state
+  //---------------------------------------initial data states
   const [listData, setListData] = useState([]);
   const [mbtiOptions, setMbtiOptions] = useState([]);
   const [discOptions, setDiscOptions] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
-  //---------------------------------------dynamic data states
+  //---------------------------------------processing data states
   const [currentId, setCurrentId] = useState(null);
   const [dataSchema, setDataSchema] = useState({
     description: "",
@@ -34,11 +33,6 @@ export default function MajorEditor() {
     suitableDisc: [],
     suitableMbti: [],
   });
-  const [selectedDiscOption, setSelectedDiscOption] = useState([]);
-  const [selectedMbtiOptions, setSelectedMbtiOptions] = useState([]);
-  const [imgUrl, setImgUrl] = useState("");
-  const [name, setName] = useState("");
-  const [desc, setDesc] = useState("");
 
   //-----------------------------------Initial data loading
   useEffect(() => {
@@ -60,8 +54,8 @@ export default function MajorEditor() {
   }, []);
 
   useEffect(() => {
-    console.log(name);
-  }, [name]);
+    console.log(dataSchema);
+  }, []);
 
   const handleAddMajor = () => {};
   const handleUpdateMajor = () => {};
@@ -126,9 +120,9 @@ export default function MajorEditor() {
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                value={name}
+                value={dataSchema.name}
                 onChange={(evt) => {
-                  setName(evt.target.value);
+                  setDataSchema({ ...dataSchema, name: evt.target.value });
                 }}
               />
             </Form.Group>
@@ -137,9 +131,12 @@ export default function MajorEditor() {
               <Form.Control
                 as="textarea"
                 rows={4}
-                value={desc}
+                value={dataSchema.description}
                 onChange={(evt) => {
-                  setDesc(evt.target.value);
+                  setDataSchema({
+                    ...dataSchema,
+                    description: evt.target.value,
+                  });
                 }}
               />
             </Form.Group>
@@ -151,9 +148,9 @@ export default function MajorEditor() {
               <Form.Label>Suitable MBTI types</Form.Label>
               <PersonalityTypesEditor
                 selections={mbtiOptions}
-                selected={selectedMbtiOptions}
+                selected={dataSchema.suitableMbti}
                 callback={(data) => {
-                  setSelectedMbtiOptions(data);
+                  setDataSchema({ ...dataSchema, suitableMbti: data });
                 }}
               />
             </Form.Group>
@@ -162,9 +159,9 @@ export default function MajorEditor() {
               <Form.Label>Suitable DISC types</Form.Label>
               <PersonalityTypesEditor
                 selections={discOptions}
-                selected={selectedDiscOption}
+                selected={dataSchema.suitableDisc}
                 callback={(data) => {
-                  setSelectedDiscOption(data);
+                  setDataSchema({ ...dataSchema, suitableDisc: data });
                 }}
               />
             </Form.Group>
@@ -177,7 +174,7 @@ export default function MajorEditor() {
               setShowModal(false);
             }}
           >
-            Calcel
+            Cancel
           </Button>
           <Button
             variant="primary"
@@ -195,11 +192,11 @@ export default function MajorEditor() {
 
 function PersonalityTypesEditor({ selections = [], selected = [], callback }) {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selecting, setSelecting] = useState(selected);
+  const [selecting, setSelecting] = useState([]);
 
   useEffect(() => {
-    callback(selecting);
-  }, [selecting, callback]);
+    setSelecting(selected);
+  }, []);
 
   return (
     <Row>
@@ -218,6 +215,7 @@ function PersonalityTypesEditor({ selections = [], selected = [], callback }) {
                   key={index}
                   onClick={() => {
                     setSelecting([...selecting, item]);
+                    callback(selecting);
                     setShowDropdown(false);
                   }}
                 >
@@ -245,6 +243,7 @@ function PersonalityTypesEditor({ selections = [], selected = [], callback }) {
               <CloseButton
                 onClick={() => {
                   setSelecting(selecting.filter((_item) => _item !== item));
+                  callback(selecting);
                 }}
               />
             </div>
