@@ -12,12 +12,14 @@ import {
 } from "firebase/auth";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import {
+  doc,
   getFirestore,
   collection,
   query,
   where,
   getDocs,
   addDoc,
+  deleteDoc,
 } from "firebase/firestore";
 
 import React, { useEffect, useState } from "react";
@@ -166,5 +168,11 @@ export async function getDataFromFirestore(
 }
 export async function addDataToFirestore(collectionName = "", data = {}) {
   const docRef = await addDoc(collection(db, collectionName), data);
-  console.log("Document written with ID: ", docRef.id);
+  return docRef.id;
+}
+export async function deleteFirestoreDocument(
+  collectionName = "",
+  documentId = ""
+) {
+  await deleteDoc(doc(db, collectionName, documentId));
 }

@@ -1,17 +1,15 @@
-import {
-  CloseButton,
-  Col,
-  Container,
-  Image,
-  Ratio,
-  Row,
-} from "react-bootstrap";
+import { CloseButton, Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 import Accordion from "react-bootstrap/Accordion";
 import Modal from "react-bootstrap/Modal";
-import { getDataFromFirestore } from "../../../Services/Firebase";
+import Spinner from "react-bootstrap/Spinner";
+import {
+  addDataToFirestore,
+  deleteFirestoreDocument,
+  getDataFromFirestore,
+} from "../../../Services/Firebase";
 import { useEffect, useState } from "react";
 import styles from "./style.module.css";
 import { resultDescription as mbtiResDescriptions } from "../../../Data/mbtiData";
@@ -23,22 +21,25 @@ export default function MajorEditor() {
   const [mbtiOptions, setMbtiOptions] = useState([]);
   const [discOptions, setDiscOptions] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   //---------------------------------------processing data states
-  const [currentId, setCurrentId] = useState(null);
-  const [dataSchema, setDataSchema] = useState({
-    description: "",
-    imageUrl: "",
+  const dataSchema = {
     name: "",
     suitableDisc: [],
     suitableMbti: [],
-  });
+  };
+  const [currentId, setCurrentId] = useState(null);
+  const [currentData, setCurrentData] = useState(dataSchema);
 
   //-----------------------------------Initial data loading
-  useEffect(() => {
+  const fetchDataFromFirestore = () => {
     getDataFromFirestore("Majors").then((result) => {
       setListData(result);
     });
+  };
+  useEffect(() => {
+    fetchDataFromFirestore();
 
     const tempArr = [];
     mbtiResDescriptions.forEach((item) => {
@@ -54,12 +55,21 @@ export default function MajorEditor() {
   }, []);
 
   useEffect(() => {
-    console.log(dataSchema);
-  }, []);
+    console.log(currentData);
+  }, [currentData]);
 
-  const handleAddMajor = () => {};
+  const handleAddMajor = async () => {
+    await addDataToFirestore("Majors", currentData);
+    fetchDataFromFirestore();
+  };
   const handleUpdateMajor = () => {};
-  const handleDeleteMajor = () => {};
+  const handleDeleteMajor = async (id) => {
+    if (id != null) {
+      await deleteFirestoreDocument("Majors", id).then(() => {
+        fetchDataFromFirestore();
+      });
+    }
+  };
 
   return (
     <>
@@ -68,6 +78,7 @@ export default function MajorEditor() {
           <Button
             onClick={() => {
               setCurrentId(null);
+              setCurrentData(dataSchema);
               setShowModal(true);
             }}
           >
@@ -78,17 +89,43 @@ export default function MajorEditor() {
         <Accordion>
           {listData.map((item, index) => {
             return (
-              <Accordion.Item eventKey="index" key={index}>
+              <Accordion.Item eventKey={item.id} key={index}>
                 <Accordion.Header>{item.data.name}</Accordion.Header>
                 <Accordion.Body>
-                  <Row>
-                    <Col xxl={4}>
-                      <Ratio aspectRatio="4x3">
-                        <Image src={item.data.imageUrl} />
-                      </Ratio>
-                    </Col>
-                    <Col xxl={8}>{item.data.description}</Col>
-                  </Row>
+                  <Container
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      overflowX: "scroll",
+                      justifyContent: "flex-start",
+                    }}
+                  >
+                    {/* RENDER ITEMS HERE */}
+                    {item.data.suitableMbti.map((item, index) => {
+                      return (
+                        <div style={{ minWidth: "90px" }} key={index}>
+                          {item}
+                        </div>
+                      );
+                    })}
+                  </Container>
+                  <Container
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      overflowX: "scroll",
+                      justifyContent: "flex-start",
+                    }}
+                  >
+                    {/* RENDER ITEMS HERE */}
+                    {item.data.suitableDisc.map((item, index) => {
+                      return (
+                        <div style={{ minWidth: "80px" }} key={index}>
+                          {item}
+                        </div>
+                      );
+                    })}
+                  </Container>
                   <Container>
                     <Button
                       onClick={() => {
@@ -98,7 +135,16 @@ export default function MajorEditor() {
                     >
                       Edit
                     </Button>
-                    <Button>Delete</Button>
+                    <Button
+                      onClick={() => {
+                        setLoading(true);
+                        handleDeleteMajor(item.id).then(() => {
+                          setLoading(false);
+                        });
+                      }}
+                    >
+                      {loading ? <Spinner animation="border" /> : "Delete"}
+                    </Button>
                   </Container>
                 </Accordion.Body>
               </Accordion.Item>
@@ -120,48 +166,31 @@ export default function MajorEditor() {
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                value={dataSchema.name}
+                value={currentData.name}
                 onChange={(evt) => {
-                  setDataSchema({ ...dataSchema, name: evt.target.value });
+                  setCurrentData({ ...currentData, name: evt.target.value });
                 }}
               />
             </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={4}
-                value={dataSchema.description}
-                onChange={(evt) => {
-                  setDataSchema({
-                    ...dataSchema,
-                    description: evt.target.value,
-                  });
-                }}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Control type="file" accept="image/*" />
-            </Form.Group>
-            {/* 3rd GROUP */}
+            {/* MBTI */}
             <Form.Group className="mb-3">
               <Form.Label>Suitable MBTI types</Form.Label>
               <PersonalityTypesEditor
                 selections={mbtiOptions}
-                selected={dataSchema.suitableMbti}
+                selected={currentData.suitableMbti}
                 callback={(data) => {
-                  setDataSchema({ ...dataSchema, suitableMbti: data });
+                  setCurrentData({ ...currentData, suitableMbti: data });
                 }}
               />
             </Form.Group>
-            {/* 4rd GROUP */}
+            {/* DISC */}
             <Form.Group className="mb-3">
               <Form.Label>Suitable DISC types</Form.Label>
               <PersonalityTypesEditor
                 selections={discOptions}
-                selected={dataSchema.suitableDisc}
+                selected={currentData.suitableDisc}
                 callback={(data) => {
-                  setDataSchema({ ...dataSchema, suitableDisc: data });
+                  setCurrentData({ ...currentData, suitableDisc: data });
                 }}
               />
             </Form.Group>
@@ -179,10 +208,14 @@ export default function MajorEditor() {
           <Button
             variant="primary"
             onClick={() => {
-              setShowModal(false);
+              setLoading(true);
+              handleAddMajor().then(() => {
+                setLoading(false);
+                setShowModal(false);
+              });
             }}
           >
-            Save
+            {loading ? <Spinner animation="border" /> : "Save"}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -191,38 +224,33 @@ export default function MajorEditor() {
 }
 
 function PersonalityTypesEditor({ selections = [], selected = [], callback }) {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [selecting, setSelecting] = useState([]);
-
-  useEffect(() => {
-    setSelecting(selected);
-  }, []);
-
   return (
     <Row>
       <Col xl={4}>
         <Dropdown autoClose="outside">
           <Dropdown.Toggle>Add</Dropdown.Toggle>
 
-          <Dropdown.Menu show={showDropdown}>
+          <Dropdown.Menu>
             <Container>
               <Form.Control type="text" />
             </Container>
-            {selections.map((item, index) => {
-              return (
-                <Dropdown.Item
-                  eventKey={index}
-                  key={index}
-                  onClick={() => {
-                    setSelecting([...selecting, item]);
-                    callback(selecting);
-                    setShowDropdown(false);
-                  }}
-                >
-                  {item}
-                </Dropdown.Item>
-              );
-            })}
+            <Container style={{ maxHeight: "200px", overflowY: "scroll" }}>
+              {selections.map((item, index) => {
+                return (
+                  <Dropdown.Item
+                    eventKey={index}
+                    key={index}
+                    onClick={() => {
+                      if (!selected.includes(item)) {
+                        callback([...selected, item]);
+                      }
+                    }}
+                  >
+                    {item}
+                  </Dropdown.Item>
+                );
+              })}
+            </Container>
           </Dropdown.Menu>
         </Dropdown>
       </Col>
@@ -242,8 +270,7 @@ function PersonalityTypesEditor({ selections = [], selected = [], callback }) {
               {item}
               <CloseButton
                 onClick={() => {
-                  setSelecting(selecting.filter((_item) => _item !== item));
-                  callback(selecting);
+                  callback(selected.filter((_item) => _item !== item));
                 }}
               />
             </div>

@@ -1,7 +1,10 @@
+import { useEffect, useState } from "react";
 import { Button, Col, Container, Image, Ratio, Row } from "react-bootstrap";
+import { getDataFromFirestore } from "../../Services/Firebase";
 import styles from "./style.module.css";
 export default function TestResultPage() {
   //get test result from session storage
+  let [suitableMajor, setSuitableMajor] = useState([]);
   let result = { mbti: "", disc: "" };
   if (sessionStorage.getItem("mbtiResult") != null) {
     result.mbti = sessionStorage.getItem("mbtiResult");
@@ -9,6 +12,19 @@ export default function TestResultPage() {
   if (sessionStorage.getItem("discResult") != null) {
     result.disc = sessionStorage.getItem("discResult");
   }
+
+  useEffect(() => {
+    getDataFromFirestore("Majors").then((data) => {
+      data.forEach((item) => {
+        if (
+          item.data.suitableMbti.includes(result.mbti) &&
+          item.data.suitableDisc.includes(result.disc)
+        ) {
+          setSuitableMajor([...suitableMajor, item]);
+        }
+      });
+    });
+  }, []);
 
   return (
     <Container fluid className={styles.container}>
@@ -33,7 +49,7 @@ export default function TestResultPage() {
               {result.disc}
             </div>
           </Col>
-          <Col className={styles.right} xl={6} xxl={6}>
+          <Col className={styles.right} xl={4} xxl={4}>
             <Container className={styles.suitableMajorsTitle}>
               Suitable Majors
               <Button>
@@ -42,75 +58,13 @@ export default function TestResultPage() {
             </Container>
             <Container fluid className={styles.suitableMajorItemContainer}>
               {/* ITEMS GO HERE */}
-              <Container className={styles.suitableMajorItem}>
-                <Container className={styles.suitableMajorItemName}>
-                  Business Management
-                </Container>
-                <Container>
-                  <Row>
-                    <Col xxl={4} xl={4} lg={3}>
-                      <Ratio aspectRatio="4x3">
-                        <Image
-                          src={require("../../Assets/userImgPlaceholder.jpg")}
-                          className={styles.suitableMajorItemImg}
-                        />
-                      </Ratio>
-                    </Col>
-                    <Col xxl={8} xl={8} lg={9}>
-                      Dolore commodo veniam consequat ipsum fugiat sunt proident
-                      veniam labore ipsum. Sunt aliquip adipisicing proident
-                      exercitation occaecat et proident consequat non in. Do
-                      adipisicing duis nisi incididunt magna.
-                    </Col>
-                  </Row>
-                </Container>
-              </Container>
-              <Container className={styles.suitableMajorItem}>
-                <Container className={styles.suitableMajorItemName}>
-                  Business Management
-                </Container>
-                <Container>
-                  <Row>
-                    <Col xxl={4} xl={4} lg={3}>
-                      <Ratio aspectRatio="4x3">
-                        <Image
-                          src={require("../../Assets/userImgPlaceholder.jpg")}
-                          className={styles.suitableMajorItemImg}
-                        />
-                      </Ratio>
-                    </Col>
-                    <Col xxl={8} xl={8} lg={9}>
-                      Dolore commodo veniam consequat ipsum fugiat sunt proident
-                      veniam labore ipsum. Sunt aliquip adipisicing proident
-                      exercitation occaecat et proident consequat non in. Do
-                      adipisicing duis nisi incididunt magna.
-                    </Col>
-                  </Row>
-                </Container>
-              </Container>
-              <Container className={styles.suitableMajorItem}>
-                <Container className={styles.suitableMajorItemName}>
-                  Business Management
-                </Container>
-                <Container>
-                  <Row>
-                    <Col xxl={4} xl={4} lg={3}>
-                      <Ratio aspectRatio="4x3">
-                        <Image
-                          src={require("../../Assets/userImgPlaceholder.jpg")}
-                          className={styles.suitableMajorItemImg}
-                        />
-                      </Ratio>
-                    </Col>
-                    <Col xxl={8} xl={8} lg={9}>
-                      Dolore commodo veniam consequat ipsum fugiat sunt proident
-                      veniam labore ipsum. Sunt aliquip adipisicing proident
-                      exercitation occaecat et proident consequat non in. Do
-                      adipisicing duis nisi incididunt magna.
-                    </Col>
-                  </Row>
-                </Container>
-              </Container>
+              {suitableMajor.map((item, index) => {
+                return (
+                  <Container className={styles.suitableMajorItem} key={index}>
+                    {item.data.name}
+                  </Container>
+                );
+              })}
             </Container>
           </Col>
         </Row>
