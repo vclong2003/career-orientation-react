@@ -3,7 +3,7 @@
 INTRODUCTION
 
 The purpose of this proposal is to solve the problem of career orientation for high school students in Vietnam. When there is too little reliable information, too much chaos, and a lack of environment to experience, career guidance has inevitably become a concern for pupils. As a result, we provide the solution of a career website with complete objective, concise, and accurate information; an exchange environment between high school and university students; and a game model that simulates future employment to help you get the clearest picture of your future major.
-1.	WHAT IS THE PROBLEM OF THE MARKET?
+I.	WHAT IS THE PROBLEM OF THE MARKET?
 
 Because high school students represent the nation's future human resources, the current vocational education system is not just an issue for the education sector but also for the entire society. It will play a significant role in determining the socioeconomic future.
 
@@ -17,7 +17,7 @@ A mentor and a wide range of networking will be extremely essential for students
 
 At last, there are a lot of students who decide on career and education paths by personal preference. To get into the school, they desire, students who have a strong passion for it to sign up for all majors or just one at random. Many students may experience depression while in school as a result of selecting the incorrect major, abandoning their studies, and wasting their time, effort, and money.
 
-2.	BUSINESS MODEL AND PROBLEM-SOLVING: 
+II.	BUSINESS MODEL AND PROBLEM-SOLVING: 
 
 1.	Business Model: 
 Our business model is geared towards providing information, collected data, and content. Specifically, this is a platform that allows content writers to publish articles on industry information, user comments, reviews, and a lot of content around the issue of providing career-oriented information to students.
@@ -49,7 +49,7 @@ Therefore, we are aware that these websites may not offer students and parents t
 
 Intending to address the issues of these websites, we established a career website that incorporates well-known personality tests, automatically summarizing user traits and providing a list of careers that are a good fit for them. After that, the undergraduates will conduct a fair, unbiased, and thorough examination of the top universities and colleges that teach the proposed vocations. Additionally, students can take part in an online game in which they assume the role of an employee working for a reputable company to broaden their experience and practical knowledge of that industry. The efficiency of the career coaching program is ensured while this element fosters user interest and loyalty to the website. Furthermore, we provide premium accounts to customers so they may access more individualized features like one-on-one interviews with successful students and professional specialists. In contrast to Novaedu, we prioritize users’ convenience when processing payments, thus the premium account will only require a single payment and will be active for 18 months after activation.
 
-3.	RISKS AND SOLUTIONS: 
+III.	RISKS AND SOLUTIONS: 
 
 The initiative will face operational, financial, and competitive risks. We have examined and uncovered several dangers after giving due consideration to market and human aspects, such as:
 
@@ -57,11 +57,11 @@ The initiative will face operational, financial, and competitive risks. We have 
 
 In Viet Nam, consumer psychology of Vietnamese people prefer to use free services; therefore, consumers won't be able to access services that charge a fee easily. It is challenging to persuade them to purchase premium packages. We aim to concentrate on high-end product quality to provide the finest experience for users to partially address the issue. We want to make them feel valued when they choose to utilize the product and pay for it. Furthermore, the project needs a variety of components, including people, technology, and a network of relationships. Consequently, the project's operational expenses will be enormous. To optimize capital and avoid overloading, we aim to develop data and finished products that are specific to a particular career and expand the scope over time.
 
-1.	About operational risk:
+2.	About operational risk:
 
 There is always a need for information to be updated as fast and precisely as possible, particularly in highly creative and dynamic careers that develop over time. It makes things challenging to track and update in time. Moreover, the project needs human resources in a variety of industries, from reputable companies. It is difficult for the project to find and maintain a network.
 Another complicated issue is the risk of customer ìnormation security. Personal information about customers, like name, age, exchange content, etc., can be hacked. This has an impact on users as well as the project's reputation and creates problems in the legal system. (Giải pháp nữa)
 
-2.	About competitor risk:
+3.	About competitor risk:
 
 A service charge case will have to directly confront non-governmental organizations, and non-profit organizations are now very popular on social networking platforms. Some typical names such as YOUTH+, Company Insider,... are very popular youth job orientation and connection platforms that frequently offer free and useful knowledge. To make uniqueness that draws customers, instead of providing basic knowledge about the same groups of disciplines at universities, it is necessary to create products and solutions that provide detailed and up-to-date information about each industry and create excitement for users by providing them with realistic simulation experience through the game, customized personality and aptitude tests for each user which makes difference in competing with other competitors. 
