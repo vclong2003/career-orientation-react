@@ -3,6 +3,7 @@
 INTRODUCTION
 
 The purpose of this proposal is to solve the problem of career orientation for high school students in Vietnam. When there is too little reliable information, too much chaos, and a lack of environment to experience, career guidance has inevitably become a concern for pupils. As a result, we provide the solution of a career website with complete objective, concise, and accurate information; an exchange environment between high school and university students; and a game model that simulates future employment to help you get the clearest picture of your future major.
+
 I.	WHAT IS THE PROBLEM OF THE MARKET?
 
 Because high school students represent the nation's future human resources, the current vocational education system is not just an issue for the education sector but also for the entire society. It will play a significant role in determining the socioeconomic future.
