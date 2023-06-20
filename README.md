@@ -6,7 +6,7 @@ Technology stack: React, Firebase, Framer Motion
 Working functionality: Home page, Personality tests (MBTI and DISC)
 
 Home page
-![image](https://github.com/vclong2003/career-orientation-react/assets/53139311/fa56f471-5e14-423f-bf5b-cd2f7cee8043)
+![screencapture-localhost-3000-2023-06-20-14_35_26](https://github.com/vclong2003/career-orientation-react/assets/53139311/269385b7-b350-4d5a-95a1-a54eb89ea617)
 
 MBTI Test
 ![image](https://github.com/vclong2003/career-orientation-react/assets/53139311/b6f3d6fd-1368-4bae-95a2-bccde9aa44ea)
